@@ -1,0 +1,282 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+% \usepackage{graphics}
+% \usepackage{graphicx}
+% \usepackage{booktabs}
+% \usepackage{ragged2e}
+% \usepackage{lipsum}
+% \usepackage{minted}
+% \usepackage{array}
+% \usepackage{algorithm,algorithmicx}
+% \usepackage{algpseudocode}
+% \usepackage{amsmath,amsfonts,amssymb}
+% \usepackage[export]{adjustbox}
+% \usepackage{xcolor}
+
+\usetheme{InfUfg}
+
+\setPrimmaryColor{UFGBlue}
+% \setPrimmaryColor{INFBlue} 
+% \setPrimmaryColor{DarkOrange}
+
+
+
+%---------------------------------------------------------------- PACKAGES -
+\newtheorem{conj}{Conjetura}
+\newtheorem{defi}{Definição}
+\newtheorem{teo}{Teorema}
+\newtheorem{lema}{Lema}
+\newtheorem{prop}{Proposição}
+\newtheorem{cor}{Corolário}
+\newtheorem{ex}{Exemplo}
+\newtheorem{exer}{Exercício}
+
+
+
+
+% \makeatletter
+\long\def\beamer@newenvnoopt#1#2#3#4{%
+  \expandafter\renewcommand\expandafter<\expandafter>\csname#1\endcsname[#2]{#3}%<- here
+  \expandafter\long\expandafter\def\csname end#1\endcsname{#4}%
+}
+\long\def\beamer@newenvopt#1#2[#3]#4#5{%
+  \expandafter\renewcommand\expandafter<\expandafter>\csname#1\endcsname[#2][#3]{#4}%<- here
+  \expandafter\long\expandafter\def\csname end#1\endcsname{#5}%
+}
+\makeatother
+
+\renewenvironment<>{block}[1]{%
+    \begin{actionenv}#2%
+      \def\insertblocktitle{#1}%
+      \par%
+      \mode<presentation>{%
+        \setbeamercolor{local structure}{use=block title,%
+           fg=block title.bg}}%
+      \usebeamertemplate{block begin}}
+    {\par%
+      \usebeamertemplate{block end}%
+    \end{actionenv}}
+
+
+
+\begin{document}
+\title[Inf UFG] %optional
+{Apresentações Instituto de informática}
+\subtitle{Template Latex}
+
+
+
+
+\author{Altino Dantas\inst{1} \and Deuslirio Junior\inst{2}}
+
+\institute[UFG] % (optional)
+{
+  \inst{1}%
+  Instituto de Informática\\
+  Federal University of Goiás
+  \and
+  \inst{2}%
+  Instituto de Informática\\
+  Federal University of Goiás
+}
+\date{2019}
+%The next statement creates the title page.
+
+\frame[noframenumbering]{\titlepage}
+
+%This page do not use the default titlepage
+% \begin{frame}[noframenumbering]
+
+% % \hspace{-0.08\textwidth}
+% \LARGE{\centerline{{\usebeamercolor[fg]{title}Apresentações do Instituto de Informática}}}
+
+% \vspace{0.1\textheight}
+% \begin{columns}[]
+
+% % \hspace{-0.2\textwidth}
+% \column{0.40\textwidth}
+%     \textbf{\small{\centerline{Altino Dantas}}}
+%     \small{\centerline{ altinobasilio@inf.ufg.br}}
+%     \small{\centerline{}}
+    
+% \column{0.40\textwidth}
+%   \textbf{ \small{\centerline{Deuslirio Junior}}}
+%     \small{\centerline{ deuslirio.junior@gmail.com}}
+%     \small{\centerline{}}
+% \column{0.20\textwidth}
+% %   ALWAYS BLANK
+% %   Sempre em branco, para não sobreescrever o local das logos
+
+% \end{columns}
+% \end{frame}
+% \date[VLC 2014] % (optional)
+% {Instituto de Informática, Outubro 2019}
+
+%End of title page configuration block
+%------------------------------------------------------------
+
+
+
+% ------------------------------------------------
+
+
+
+
+
+
+
+%---------------------------------------------------------
+%This block of code is for the table of contents after
+%the title page
+\horiz
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents
+\end{frame}
+%---------------------------------------------------------
+
+
+\section{First section}
+
+%---------------------------------------------------------
+%Changing visivility of the text
+\begin{frame}
+\frametitle{Sample frame title}
+This is a text in second frame. For the sake of showing an example.
+
+\begin{itemize}
+    \item<1-> Text visible on slide 1
+    \item<2-> Text visible on slide 2
+    \begin{itemize}
+        \item test subitem
+    \end{itemize}
+    \item<3> Text visible on slides 3
+    \item<4-> Text visible on slide 4
+\end{itemize}
+\end{frame}
+
+ \begin{frame}{Problemas mais complexos}
+\footnotesize
+  \begin{ex}
+Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de um ou dois caracteres alfanuméricos, em que letras maiúsculas e minúsculas não são distinguidas. Além disso, um nome de variável deve começar com uma letra e deve ser diferente das cinco sequências de dois caracteres reservadas para o uso de comandos. Quantos nomes diferentes de variáveis são possíveis nesta versão do BASIC?
+  \end{ex}
+%\pause
+
+\begin{block}{Solução}
+Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas. Assim, $V_2=26\cdot 36-5=931$. Logo, há $V=V_1+V_2 = 26+931=957$ nomes diferentes para variáveis nesta versão do BASIC.
+  \end{block}
+
+ \end{frame}
+ 
+%---------------------------------------------------------
+\verti
+ \begin{frame}{Problemas mais complexos}
+\footnotesize
+  \begin{ex}
+Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de um ou dois caracteres alfanuméricos, em que letras maiúsculas e minúsculas não são distinguidas. Além disso, um nome de variável deve começar com uma letra e deve ser diferente das cinco sequências de dois caracteres reservadas para o uso de comandos. Quantos nomes diferentes de variáveis são possíveis nesta versão do BASIC?
+  \end{ex}
+%\pause
+
+\begin{block}{Solução}
+Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas. Assim, $V_2=26\cdot 36-5=931$. Logo, há $V=V_1+V_2 = 26+931=957$ nomes diferentes para variáveis nesta versão do BASIC.
+  \end{block}
+
+ \end{frame}
+
+%---------------------------------------------------------
+%Example of the \pause command
+
+\begin{frame}
+\frametitle{Pause Example}
+In this slide \pause
+
+the text will be partially visible \pause
+
+And finally everything will be there
+\end{frame}
+
+%---------------------------------------------------------
+
+\section{Second section}
+
+%---------------------------------------------------------
+%Highlighting text
+\begin{frame}
+\frametitle{Sample frame title}
+
+In this slide, some important text will be
+\alert{highlighted} because it's important.
+Please, don't abuse it.
+
+\begin{block}{Remark}
+Sample text
+\end{block}
+
+\begin{alertblock}{Important theorem}
+Sample text in red box
+\end{alertblock}
+
+\begin{examples}
+Sample text in green box. The title of the block is ``Examples".
+\end{examples}
+\end{frame}
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Two columns
+\blank
+\setslidebgcolor{Ocean}
+\begin{frame}
+\frametitle{Two-column slide}
+
+\begin{columns}
+
+\column{0.5\textwidth}
+This is a text in first column.
+$$E=mc^2$$
+\begin{itemize}
+\item First item
+\item Second item
+\end{itemize}
+
+\column{0.5\textwidth}
+This text will be in the second column
+and on a second tought this is a nice looking
+layout in some cases.
+\begin{enumerate}
+    \item First
+    \item Second
+\end{enumerate}
+\end{columns}
+\end{frame}
+%---------------------------------------------------------
+
+
+%---------------------------------------------------------
+%Two columns
+\mainpoint
+\begin{frame}
+
+    \begin{mainpointtext}
+         Preliminary Empirical Study | Doc2vec
+    \end{mainpointtext}
+
+
+\end{frame}
+%---------------------------------------------------------
+
+% Example of changing background color 
+\verti
+\setslidebgcolor{Ocean}
+
+\begin{frame}{Teste}
+In this slide 
+the text will be partially visible 
+And finally everything will be there
+\end{frame}
+
+%---------------------------------------------------------
+
+
+\end{document}

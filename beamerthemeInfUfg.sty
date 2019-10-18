@@ -1,0 +1,212 @@
+\ProvidesPackage{beamerthemeInfUfg}[2019/10/15]
+\usepackage[sfdefault]{roboto}  
+\usepackage{tikz}
+%% Option 'sfdefault' only if the base font of the document is to be sans serif
+\usepackage[T1]{fontenc}
+\mode<presentation>
+
+\definecolor{INFBlue}{RGB}{0, 92, 161}
+\definecolor{UFGBlue}{RGB}{0, 114, 185}
+\definecolor{PrimmaryColor}{RGB}{63, 63, 63}
+
+\definecolor{DarkGray}{RGB}{63,63,63}
+\definecolor{LightGray}{RGB}{150,150,150}
+\definecolor{Ocean}{RGB}{129,194,234}
+\definecolor{white}{RGB}{255,255,255}
+\definecolor{DarkOrange}{RGB}{255, 152, 0}
+\definecolor{LightOrange}{RGB}{255, 193, 7}
+\definecolor{DarkGreen}{RGB}{91, 141, 8}
+\definecolor{LightGreen}{RGB}{122, 188, 12}
+
+
+\newcommand{\setPrimmaryColor}[1]{
+    \colorlet{PrimmaryColor}{#1}
+}
+
+\newcommand{\setDftColors}{
+    \color{DarkGray} %Primmary 
+    \setbeamercolor{bgcolor}{fg=PrimmaryColor}
+    \setbeamercolor{normal}{fg=DarkGray}
+    \setbeamercolor{title}{fg=DarkGray}
+    \setbeamercolor{frametitle}{fg=DarkGray}
+    \setbeamercolor{structure}{fg=PrimmaryColor}
+    \setbeamercolor{normal text}{fg=DarkGray,bg=white}
+    \setbeamercolor{section number projected}{bg=PrimmaryColor,fg=white}
+    \setbeamercolor{itemize item}{fg=DarkGray}
+    \setbeamercolor{itemize subitem}{fg=DarkGray}
+    \setbeamercolor{itemize subsubitem}{fg=DarkGray}
+    \setbeamercolor{itemize subbody}{fg=DarkGray}
+    \setbeamercolor{itemize/enumerate body}{fg=DarkGray}
+    \setbeamercolor{itemize/enumerate subbody}{fg=DarkGray}
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=DarkGray}
+    \setbeamercolor{alerted text}{fg=DarkOrange}
+    \setbeamercolor{example text}{fg=DarkGreen}
+    \setbeamercolor{block title}{fg=UFGBlue}
+}
+
+\newcommand{\setWhite}{
+    \color{white}
+    \setbeamercolor{normal}{fg=white}
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{structure}{fg=white}
+    \setbeamercolor{normal text}{fg=white,bg=white}
+    \setbeamercolor{section number projected}{bg=white,fg=white}
+    \setbeamercolor{frametitle}{fg=white}
+    \setbeamercolor{itemize item}{fg=white}
+    \setbeamercolor{itemize subitem}{fg=white}
+    \setbeamercolor{itemize subsubitem}{fg=white}
+    \setbeamercolor{itemize/enumerate body}{fg=white}
+    \setbeamercolor{itemize/enumerate subbody}{fg=white}
+    \setbeamercolor{itemize/enumerate subsubbody}{fg=white}
+    
+}
+    
+
+\setDftColors
+\setbeamerfont{alerted text}{series=\bfseries}
+\setbeamerfont{block title}{series=\bfseries}
+
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\large\donotcoloroutermaths$\bullet$}}
+\setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\circ$}}
+\setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacksquare$}}
+
+\setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
+
+\setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
+\setbeamerfont{page number in head/foot}{size=\small}
+\setbeamercolor{page number in head/foot}{fg=PrimmaryColor}
+% \setbeamertemplate{footline}[frame number]
+\setbeamertemplate{footline}{\raisebox{7pt}{
+    \makebox[\paperwidth]{\hfill\makebox[25pt]{\bfseries\scriptsize\insertframenumber/\inserttotalframenumber }}}}
+    
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamersize{text margin left=0.05\textwidth}
+\setbeamersize{text margin right=0.15\textwidth}
+
+
+
+\pgfdeclareimage[height=12mm]{logo1}{lib/logos/infw.png}
+\pgfdeclareimage[height=15mm]{logo2}{lib/logos/ufg_black.pdf}
+\pgfdeclareimage[height=10mm]{logo3}{lib/logos/infw2.png}
+\pgfdeclareimage[height=15mm]{logo4}{lib/logos/ufgb2.png}
+\pgfdeclareimage[height=13mm]{logo5}{lib/logos/infw2.png}
+\pgfdeclareimage[width=\paperwidth]{vertical}{lib/layouts/vertical_bg.pdf}
+\pgfdeclareimage[width=\paperwidth]{horizontal}{lib/layouts/horizontal_bg.pdf}
+\pgfdeclareimage[width=\paperwidth]{titlepage}{lib/layouts/intro_bg.pdf}
+\pgfdeclareimage[width=\paperwidth]{transparent}{lib/layouts/title_bg.pdf}
+
+
+% Defining the layouts
+\newcommand{\titleLayout}{
+
+    \usebackgroundtemplate{
+   
+        \begin{picture}(100,256)(0,0)
+
+             \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{titlepage}}
+            \put(12,10){\pgfuseimage{logo1}}
+            \put(345,25){\pgfuseimage{logo2}}
+        \end{picture}
+
+    }
+    \setbeamercolor{bgcolor}{bg=PrimmaryColor}
+    % \setbeamersize{text margin right=0.2\textwidth}
+    \setbeamerfont{title}{series=\bfseries,parent=structure}
+    \setbeamerfont{subtitle}{size=\scriptsize,series=\bfseries,parent=structure}
+    \setbeamerfont{author}{size=\small,series=\bfseries,parent=structure}
+    \setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
+    \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
+}
+
+\newcommand{\horiz}{
+    \usebackgroundtemplate{
+        \begin{picture}(100,256)(0,0)
+            \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{horizontal}}
+            \put(10,5){\pgfuseimage{logo3}}
+        \end{picture}
+    }
+    \setDftColors
+}
+
+\newcommand{\verti}{
+    \usebackgroundtemplate{
+        \begin{picture}(100,256)(0,0)
+            \put(0,0){
+                \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
+             }
+            \put(0,0){\pgfuseimage{vertical}}
+            \put(410,205){\pgfuseimage{logo5}}
+        \end{picture}
+    }
+
+   \setDftColors
+}
+\newcommand{\blank}{
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)(0,0)
+        \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
+        \end{beamercolorbox}
+    \end{picture}
+  }
+    \setWhite
+    
+    
+}
+
+\newcommand{\mainpoint}{
+  \usebackgroundtemplate{
+    \begin{picture}(100,256)(0,0)
+        \put(0,0){
+            \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}
+            \end{beamercolorbox}    
+        }
+        \put(0,0){\pgfuseimage{transparent}}
+        \put(150,80){
+            \begin{tikzpicture}
+                \fill[white] (0,0) rectangle (0.2,3);
+            \end{tikzpicture}
+        }
+    \end{picture}
+  }
+  
+  \setWhite
+  
+}
+
+\titleLayout
+
+% --------------------------------------------%
+% Defining command to control slide's changes
+% --------------------------------------------%
+
+\newcommand{\setslidebgcolor}[1]{
+    \setbeamercolor{bgcolor}{bg=#1}    
+}
+
+\newcommand{\setslidelayout}[1]{
+    % to be implemented...    
+}
+
+
+\newenvironment{mainpointtext}
+{   \begin{center}
+    \vspace{2cm}
+    \begin{tabular}{|r|}
+    \hline
+    \selectfont \Huge \bfseries
+}
+{
+    \\ 
+    \hline
+    \end{tabular}
+    \end{center}
+}
+
