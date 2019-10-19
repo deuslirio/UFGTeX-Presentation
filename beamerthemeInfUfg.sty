@@ -23,7 +23,16 @@
     \colorlet{PrimmaryColor}{#1}
 }
 
-\newcommand{\setDftColors}{
+\newcommand{\setLogos}[2]{
+    \pgfdeclareimage[height=12mm]{logo1_title}{#1}
+    \pgfdeclareimage[height=10mm]{logo2_small}{#2}
+    \pgfdeclareimage[width=13mm]{logo2_medium}{#2}
+    
+    % set UFG logo
+    \pgfdeclareimage[height=15mm]{logo3}{lib/logos/ufg_black.pdf}
+}
+
+\newcommand{\setDefaultConfig}{
     \color{DarkGray} %Primmary 
     \setbeamercolor{bgcolor}{fg=PrimmaryColor}
     \setbeamercolor{normal}{fg=DarkGray}
@@ -42,6 +51,7 @@
     \setbeamercolor{alerted text}{fg=DarkOrange}
     \setbeamercolor{example text}{fg=DarkGreen}
     \setbeamercolor{block title}{fg=UFGBlue}
+    \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 }
 
 \newcommand{\setWhite}{
@@ -58,11 +68,10 @@
     \setbeamercolor{itemize/enumerate body}{fg=white}
     \setbeamercolor{itemize/enumerate subbody}{fg=white}
     \setbeamercolor{itemize/enumerate subsubbody}{fg=white}
-    
 }
     
 
-\setDftColors
+\setDefaultConfig
 \setbeamerfont{alerted text}{series=\bfseries}
 \setbeamerfont{block title}{series=\bfseries}
 
@@ -74,24 +83,36 @@
 \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 
 \setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
-\setbeamerfont{page number in head/foot}{size=\small}
-\setbeamercolor{page number in head/foot}{fg=PrimmaryColor}
-% \setbeamertemplate{footline}[frame number]
-\setbeamertemplate{footline}{\raisebox{7pt}{
-    \makebox[\paperwidth]{\hfill\makebox[25pt]{\bfseries\scriptsize\insertframenumber/\inserttotalframenumber }}}}
-    
+
+\setbeamertemplate{footline}{
+    \ifnum \insertpagenumber > 1
+        \raisebox{7pt}[0pt][0pt]{
+            \makebox[\paperwidth]{\hfill\makebox[30pt]{\bfseries\scriptsize \insertframenumber/\inserttotalframenumber }}
+        }
+    \fi
+}
+\defbeamertemplate{footline}{ftln}{
+
+}
+
+
 \setbeamertemplate{navigation symbols}{}
+
+
 
 \setbeamersize{text margin left=0.05\textwidth}
 \setbeamersize{text margin right=0.15\textwidth}
 
+% \setbeamertemplate{footline}{
+%  \ifnum \insertpagenumber=1
+      
+%     \else
+%         \raisebox{7pt}{
+%     \makebox[\paperwidth]{\hfill\makebox[25pt]{\bfseries\scriptsize\insertframenumber/\inserttotalframenumber }}}
+%     \fi
+% }
 
 
-\pgfdeclareimage[height=12mm]{logo1}{lib/logos/infw.png}
-\pgfdeclareimage[height=15mm]{logo2}{lib/logos/ufg_black.pdf}
-\pgfdeclareimage[height=10mm]{logo3}{lib/logos/infw2.png}
-\pgfdeclareimage[height=15mm]{logo4}{lib/logos/ufgb2.png}
-\pgfdeclareimage[height=13mm]{logo5}{lib/logos/infw2.png}
 \pgfdeclareimage[width=\paperwidth]{vertical}{lib/layouts/vertical_bg.pdf}
 \pgfdeclareimage[width=\paperwidth]{horizontal}{lib/layouts/horizontal_bg.pdf}
 \pgfdeclareimage[width=\paperwidth]{titlepage}{lib/layouts/intro_bg.pdf}
@@ -109,8 +130,8 @@
                 \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
              }
             \put(0,0){\pgfuseimage{titlepage}}
-            \put(12,10){\pgfuseimage{logo1}}
-            \put(345,25){\pgfuseimage{logo2}}
+            \put(12,10){\pgfuseimage{logo1_title}}
+            \put(345,25){\pgfuseimage{logo3}}
         \end{picture}
 
     }
@@ -121,6 +142,9 @@
     \setbeamerfont{author}{size=\small,series=\bfseries,parent=structure}
     \setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
     \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
+    
+    % \setbeamertemplate{footline}{}
+    
 }
 
 \newcommand{\horiz}{
@@ -130,10 +154,10 @@
                 \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
              }
             \put(0,0){\pgfuseimage{horizontal}}
-            \put(10,5){\pgfuseimage{logo3}}
+            \put(10,5){\pgfuseimage{logo2_small}}
         \end{picture}
     }
-    \setDftColors
+    \setDefaultConfig
 }
 
 \newcommand{\verti}{
@@ -143,11 +167,11 @@
                 \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
              }
             \put(0,0){\pgfuseimage{vertical}}
-            \put(410,205){\pgfuseimage{logo5}}
+            \put(410,205){\pgfuseimage{logo2_medium}}
         \end{picture}
     }
 
-   \setDftColors
+   \setDefaultConfig
 }
 \newcommand{\blank}{
   \usebackgroundtemplate{
@@ -169,15 +193,25 @@
             \end{beamercolorbox}    
         }
         \put(0,0){\pgfuseimage{transparent}}
+        % Put the frame title in the middle of page
+        \put(160,115){
+            \begin{tabular}{m{0.7\textwidth}}
+                \begin{flushleft}
+                   \selectfont \Huge \bfseries \insertframetitle
+                \end{flushleft}
+            \end{tabular}
+        }
         \put(150,80){
             \begin{tikzpicture}
                 \fill[white] (0,0) rectangle (0.2,3);
             \end{tikzpicture}
         }
     \end{picture}
-  }
   
+  }
+ 
   \setWhite
+  \setbeamertemplate{frametitle}{  }
   
 }
 
@@ -196,17 +230,5 @@
 }
 
 
-\newenvironment{mainpointtext}
-{   \begin{center}
-    \vspace{2cm}
-    \begin{tabular}{|r|}
-    \hline
-    \selectfont \Huge \bfseries
-}
-{
-    \\ 
-    \hline
-    \end{tabular}
-    \end{center}
-}
+
 

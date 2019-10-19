@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169]{beamer}
+\documentclass[aspectratio=169,t]{beamer}
 \usepackage[utf8]{inputenc}
 % \usepackage{graphics}
 % \usepackage{graphicx}
@@ -12,13 +12,15 @@
 % \usepackage{amsmath,amsfonts,amssymb}
 % \usepackage[export]{adjustbox}
 % \usepackage{xcolor}
+\usepackage{array}
 
 \usetheme{InfUfg}
-
+%---------------------------------------------------------------- Definitions
 \setPrimmaryColor{UFGBlue}
 % \setPrimmaryColor{INFBlue} 
 % \setPrimmaryColor{DarkOrange}
 
+\setLogos{lib/logos/infw.png}{lib/logos/infw2.png} %First one is logo in title slide, and second one is the logo used in the remaining slides
 
 
 %---------------------------------------------------------------- PACKAGES -
@@ -34,28 +36,8 @@
 
 
 
-% \makeatletter
-\long\def\beamer@newenvnoopt#1#2#3#4{%
-  \expandafter\renewcommand\expandafter<\expandafter>\csname#1\endcsname[#2]{#3}%<- here
-  \expandafter\long\expandafter\def\csname end#1\endcsname{#4}%
-}
-\long\def\beamer@newenvopt#1#2[#3]#4#5{%
-  \expandafter\renewcommand\expandafter<\expandafter>\csname#1\endcsname[#2][#3]{#4}%<- here
-  \expandafter\long\expandafter\def\csname end#1\endcsname{#5}%
-}
-\makeatother
 
-\renewenvironment<>{block}[1]{%
-    \begin{actionenv}#2%
-      \def\insertblocktitle{#1}%
-      \par%
-      \mode<presentation>{%
-        \setbeamercolor{local structure}{use=block title,%
-           fg=block title.bg}}%
-      \usebeamertemplate{block begin}}
-    {\par%
-      \usebeamertemplate{block end}%
-    \end{actionenv}}
+
 
 
 
@@ -83,34 +65,6 @@
 %The next statement creates the title page.
 
 \frame[noframenumbering]{\titlepage}
-
-%This page do not use the default titlepage
-% \begin{frame}[noframenumbering]
-
-% % \hspace{-0.08\textwidth}
-% \LARGE{\centerline{{\usebeamercolor[fg]{title}Apresentações do Instituto de Informática}}}
-
-% \vspace{0.1\textheight}
-% \begin{columns}[]
-
-% % \hspace{-0.2\textwidth}
-% \column{0.40\textwidth}
-%     \textbf{\small{\centerline{Altino Dantas}}}
-%     \small{\centerline{ altinobasilio@inf.ufg.br}}
-%     \small{\centerline{}}
-    
-% \column{0.40\textwidth}
-%   \textbf{ \small{\centerline{Deuslirio Junior}}}
-%     \small{\centerline{ deuslirio.junior@gmail.com}}
-%     \small{\centerline{}}
-% \column{0.20\textwidth}
-% %   ALWAYS BLANK
-% %   Sempre em branco, para não sobreescrever o local das logos
-
-% \end{columns}
-% \end{frame}
-% \date[VLC 2014] % (optional)
-% {Instituto de Informática, Outubro 2019}
 
 %End of title page configuration block
 %------------------------------------------------------------
@@ -148,7 +102,7 @@ This is a text in second frame. For the sake of showing an example.
     \item<1-> Text visible on slide 1
     \item<2-> Text visible on slide 2
     \begin{itemize}
-        \item test subitem
+        \item text subitem
     \end{itemize}
     \item<3> Text visible on slides 3
     \item<4-> Text visible on slide 4
@@ -163,7 +117,7 @@ Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de 
 %\pause
 
 \begin{block}{Solução}
-Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas. Assim, $V_2=26\cdot 36-5=931$. Logo, há $V=V_1+V_2 = 26+931=957$ nomes diferentes para variáveis nesta versão do BASIC.
+Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas.
   \end{block}
 
  \end{frame}
@@ -256,12 +210,7 @@ layout in some cases.
 %---------------------------------------------------------
 %Two columns
 \mainpoint
-\begin{frame}
-
-    \begin{mainpointtext}
-         Preliminary Empirical Study | Doc2vec
-    \end{mainpointtext}
-
+\begin{frame}{Preliminary Empirical Study | Doc2vec}
 
 \end{frame}
 %---------------------------------------------------------
@@ -277,6 +226,19 @@ And finally everything will be there
 \end{frame}
 
 %---------------------------------------------------------
+\begin{frame}
+\frametitle{Sample frame title}
+This is a text in second frame. For the sake of showing an example.
 
+\begin{itemize}
+    \item<1-> Text visible on slide 1
+    \item<2-> Text visible on slide 2
+    \begin{itemize}
+        \item text subitem
+    \end{itemize}
+    \item<3> Text visible on slides 3
+    \item<4-> Text visible on slide 4
+\end{itemize}
+\end{frame}
 
 \end{document}
