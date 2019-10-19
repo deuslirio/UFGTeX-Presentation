@@ -3,6 +3,8 @@
 \usepackage{tikz}
 %% Option 'sfdefault' only if the base font of the document is to be sans serif
 \usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{ifthen}
 \mode<presentation>
 
 \definecolor{INFBlue}{RGB}{0, 92, 161}
@@ -54,7 +56,7 @@
     \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 }
 
-\newcommand{\setWhite}{
+\newcommand{\setWhiteConfig}{
     \color{white}
     \setbeamercolor{normal}{fg=white}
     \setbeamercolor{frametitle}{fg=white}
@@ -68,20 +70,35 @@
     \setbeamercolor{itemize/enumerate body}{fg=white}
     \setbeamercolor{itemize/enumerate subbody}{fg=white}
     \setbeamercolor{itemize/enumerate subsubbody}{fg=white}
+    \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 }
     
 
 \setDefaultConfig
+
+
+%----------------------------------------Formatting beamer elements
 \setbeamerfont{alerted text}{series=\bfseries}
 \setbeamerfont{block title}{series=\bfseries}
+
+% \setbeamertemplate{section in toc}[square]
+
+\setbeamertemplate{section in toc}{%
+  {\inserttocsectionnumber.}~\inserttocsection
+}
+\setbeamertemplate{subsection in toc}[square]
+% \setbeamertemplate{subsection in toc}{%
+%   \hspace{1.2em}{\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par
+% }
 
 
 \setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\large\donotcoloroutermaths$\bullet$}}
 \setbeamertemplate{itemize subitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\circ$}}
 \setbeamertemplate{itemize subsubitem}{\tiny\raise1.5pt\hbox{\donotcoloroutermaths$\blacksquare$}}
 
-\setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
-
+\setbeamertemplate{frametitle}{ 
+    \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut 
+}
 \setbeamerfont{frametitle}{size=\LARGE, series=\bfseries}
 
 \setbeamertemplate{footline}{
@@ -102,24 +119,17 @@
 
 \setbeamersize{text margin left=0.05\textwidth}
 \setbeamersize{text margin right=0.15\textwidth}
-
-% \setbeamertemplate{footline}{
-%  \ifnum \insertpagenumber=1
-      
-%     \else
-%         \raisebox{7pt}{
-%     \makebox[\paperwidth]{\hfill\makebox[25pt]{\bfseries\scriptsize\insertframenumber/\inserttotalframenumber }}}
-%     \fi
-% }
+\setbeamercolor{bgcolor}{bg=PrimmaryColor}
 
 
+% ----------------------------------Define layouts backgrounds
 \pgfdeclareimage[width=\paperwidth]{vertical}{lib/layouts/vertical_bg.pdf}
 \pgfdeclareimage[width=\paperwidth]{horizontal}{lib/layouts/horizontal_bg.pdf}
 \pgfdeclareimage[width=\paperwidth]{titlepage}{lib/layouts/intro_bg.pdf}
 \pgfdeclareimage[width=\paperwidth]{transparent}{lib/layouts/title_bg.pdf}
 
 
-% Defining the layouts
+% ----------------------------------Defining the layouts
 \newcommand{\titleLayout}{
 
     \usebackgroundtemplate{
@@ -135,19 +145,18 @@
         \end{picture}
 
     }
-    \setbeamercolor{bgcolor}{bg=PrimmaryColor}
-    % \setbeamersize{text margin right=0.2\textwidth}
+   
+
     \setbeamerfont{title}{series=\bfseries,parent=structure}
     \setbeamerfont{subtitle}{size=\scriptsize,series=\bfseries,parent=structure}
     \setbeamerfont{author}{size=\small,series=\bfseries,parent=structure}
     \setbeamerfont{institute}{size=\scriptsize,series=\mdseries,parent=structure}
     \setbeamerfont{date}{size=\scriptsize,series=\bfseries,parent=structure}
     
-    % \setbeamertemplate{footline}{}
     
 }
 
-\newcommand{\horiz}{
+\newcommand{\horizontal}{
     \usebackgroundtemplate{
         \begin{picture}(100,256)(0,0)
             \put(0,0){
@@ -160,7 +169,7 @@
     \setDefaultConfig
 }
 
-\newcommand{\verti}{
+\newcommand{\vertical}{
     \usebackgroundtemplate{
         \begin{picture}(100,256)(0,0)
             \put(0,0){
@@ -180,7 +189,7 @@
         \end{beamercolorbox}
     \end{picture}
   }
-    \setWhite
+    \setWhiteConfig
     
     
 }
@@ -210,7 +219,7 @@
   
   }
  
-  \setWhite
+  \setWhiteConfig
   \setbeamertemplate{frametitle}{  }
   
 }
@@ -221,12 +230,16 @@
 % Defining command to control slide's changes
 % --------------------------------------------%
 
-\newcommand{\setslidebgcolor}[1]{
+\newcommand{\setBGColor}[1]{
     \setbeamercolor{bgcolor}{bg=#1}    
 }
 
-\newcommand{\setslidelayout}[1]{
-    % to be implemented...    
+\newcommand{\setLayout}[1]{
+    \ifthenelse{\equal{#1}{titlepage}}{\titleLayout}{}
+    \ifthenelse{\equal{#1}{vertical}}{\vertical}{}
+    \ifthenelse{\equal{#1}{horizontal}}{\horizontal}{}
+    \ifthenelse{\equal{#1}{mainpoint}}{\mainpoint}{}
+    \ifthenelse{\equal{#1}{blank}}{\blank}{}
 }
 
 

@@ -1,29 +1,17 @@
 \documentclass[aspectratio=169,t]{beamer}
 \usepackage[utf8]{inputenc}
-% \usepackage{graphics}
-% \usepackage{graphicx}
-% \usepackage{booktabs}
-% \usepackage{ragged2e}
-% \usepackage{lipsum}
-% \usepackage{minted}
-% \usepackage{array}
-% \usepackage{algorithm,algorithmicx}
-% \usepackage{algpseudocode}
-% \usepackage{amsmath,amsfonts,amssymb}
-% \usepackage[export]{adjustbox}
-% \usepackage{xcolor}
-\usepackage{array}
 
 \usetheme{InfUfg}
-%---------------------------------------------------------------- Definitions
-\setPrimmaryColor{UFGBlue}
+%--------------------------------------- Primmary Definitions
+\setPrimmaryColor{UFGBlue} % This command set the default Color, is possible to choose a custom color
+
 % \setPrimmaryColor{INFBlue} 
 % \setPrimmaryColor{DarkOrange}
 
-\setLogos{lib/logos/infw.png}{lib/logos/infw2.png} %First one is logo in title slide, and second one is the logo used in the remaining slides
+\setLogos{lib/logos/infw.png}{lib/logos/infw2.png} %First one is logo in title slide (we recommend use a horizontal image), and second one is the logo used in the remaining slides (we recommend use a square image)
 
 
-%---------------------------------------------------------------- PACKAGES -
+%----------------------------------------------------------PACKAGES -
 \newtheorem{conj}{Conjetura}
 \newtheorem{defi}{Definição}
 \newtheorem{teo}{Teorema}
@@ -33,21 +21,10 @@
 \newtheorem{ex}{Exemplo}
 \newtheorem{exer}{Exercício}
 
-
-
-
-
-
-
-
-
+% --------------------------------------Title Slide Information
 \begin{document}
-\title[Inf UFG] %optional
-{Apresentações Instituto de informática}
+\title[Inf UFG]{Apresentações Instituto de informática}
 \subtitle{Template Latex}
-
-
-
 
 \author{Altino Dantas\inst{1} \and Deuslirio Junior\inst{2}}
 
@@ -62,27 +39,15 @@
   Federal University of Goiás
 }
 \date{2019}
-%The next statement creates the title page.
-
+%-----------------------The next statement creates the title page.
 \frame[noframenumbering]{\titlepage}
 
-%End of title page configuration block
-%------------------------------------------------------------
 
 
 
-% ------------------------------------------------
+%------------------------------------------------Slide1
+\setLayout{horizontal} %This command define the layout. 'horizontal' can be replace with 'vertical', 'blank, 'mainpoint', 'titlepage'
 
-
-
-
-
-
-
-%---------------------------------------------------------
-%This block of code is for the table of contents after
-%the title page
-\horiz
 \begin{frame}
 \frametitle{Table of Contents}
 \tableofcontents
@@ -91,23 +56,6 @@
 
 
 \section{First section}
-
-%---------------------------------------------------------
-%Changing visivility of the text
-\begin{frame}
-\frametitle{Sample frame title}
-This is a text in second frame. For the sake of showing an example.
-
-\begin{itemize}
-    \item<1-> Text visible on slide 1
-    \item<2-> Text visible on slide 2
-    \begin{itemize}
-        \item text subitem
-    \end{itemize}
-    \item<3> Text visible on slides 3
-    \item<4-> Text visible on slide 4
-\end{itemize}
-\end{frame}
 
  \begin{frame}{Problemas mais complexos}
 \footnotesize
@@ -123,7 +71,7 @@ Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. S
  \end{frame}
  
 %---------------------------------------------------------
-\verti
+\setLayout{vertical}
  \begin{frame}{Problemas mais complexos}
 \footnotesize
   \begin{ex}
@@ -154,33 +102,9 @@ And finally everything will be there
 \section{Second section}
 
 %---------------------------------------------------------
-%Highlighting text
-\begin{frame}
-\frametitle{Sample frame title}
-
-In this slide, some important text will be
-\alert{highlighted} because it's important.
-Please, don't abuse it.
-
-\begin{block}{Remark}
-Sample text
-\end{block}
-
-\begin{alertblock}{Important theorem}
-Sample text in red box
-\end{alertblock}
-
-\begin{examples}
-Sample text in green box. The title of the block is ``Examples".
-\end{examples}
-\end{frame}
-%---------------------------------------------------------
-
-
-%---------------------------------------------------------
 %Two columns
-\blank
-\setslidebgcolor{Ocean}
+\setLayout{blank}
+
 \begin{frame}
 \frametitle{Two-column slide}
 
@@ -208,24 +132,59 @@ layout in some cases.
 
 
 %---------------------------------------------------------
-%Two columns
-\mainpoint
-\begin{frame}{Preliminary Empirical Study | Doc2vec}
+%Highlighting text
+\setLayout{vertical}
+\begin{frame}
+\frametitle{Sample frame title}
 
+In this slide, some important text will be
+\alert{highlighted} because it's important.
+Please, don't abuse it.
+
+\begin{block}{Remark}
+Sample text
+\end{block}
+
+\begin{alertblock}{Important theorem}
+Sample text in red box
+\end{alertblock}
+
+\begin{examples}
+Sample text in green box. The title of the block is ``Examples".
+\end{examples}
 \end{frame}
 %---------------------------------------------------------
 
+
+
+
+%---------------------------------------------------------
+\section{Preliminary Empirical Study}
+\setLayout{mainpoint}
+\begin{frame}{Preliminary Empirical Study}
+
+\end{frame}
+
+%-------------------------------------------------------
+\setLayout{vertical}
+ \begin{frame}{Problemas mais complexos}
+\footnotesize
+  \begin{ex}
+Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de um ou dois caracteres alfanuméricos, em que letras maiúsculas e minúsculas não são distinguidas. Além disso, um nome de variável deve começar com uma letra e deve ser diferente das cinco sequências de dois caracteres reservadas para o uso de comandos. Quantos nomes diferentes de variáveis são possíveis nesta versão do BASIC?
+  \end{ex}
+%\pause
+
+\begin{block}{Solução}
+Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas.
+  \end{block}
+
+ \end{frame}
+
+%---------------------------------------------------------
+\subsection{Results}
 % Example of changing background color 
-\verti
-\setslidebgcolor{Ocean}
-
-\begin{frame}{Teste}
-In this slide 
-the text will be partially visible 
-And finally everything will be there
-\end{frame}
-
-%---------------------------------------------------------
+\setLayout{vertical}
+\setBGColor{DarkOrange}
 \begin{frame}
 \frametitle{Sample frame title}
 This is a text in second frame. For the sake of showing an example.
@@ -241,4 +200,9 @@ This is a text in second frame. For the sake of showing an example.
 \end{itemize}
 \end{frame}
 
+%---------------------------------
+\setLayout{titlepage}
+\setBGColor{DarkGray}
+\titlepage
+%-------------------------------------
 \end{document}
