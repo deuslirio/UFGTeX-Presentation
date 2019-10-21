@@ -1,7 +1,7 @@
 ![UFGTeXPresentation logo](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/ufgtexpresentation.png)
 
 ## What is it?
-A Latex template to help students, professors, or researchers from Universidade Federal de Goiás (UFG) to prepare their presentation slides in the format 16:9. Besides presenting a modern design concept, UFGTeXPresentation provides different slides’ layout and color schemas to personalize the presentation.
+A Latex template to help students, professors, or researchers from Universidade Federal de Goiás (UFG) to prepare their presentation slides in the **format 16:9**. Besides presenting a modern design concept, UFGTeXPresentation provides different slides’ layouts and color schemas to personalize the presentation.
 
 ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/title_layout_print.png)
 
@@ -56,7 +56,7 @@ After downloading or cloning this repository, you must edit the file **presentat
 > **ATTENTION:** When you use the commands `\setLayout` and `\setBGColor`, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands just before the intendant slide.
 
 
-## Template's colors
+## Template's Colors
 
 | Color Name    | RGB         | Color Name  | RGB          |
 |---------------|-------------|-------------|--------------|
@@ -73,11 +73,11 @@ Despite the colors defined in the template, one can define his/her personalized 
 \definecolor{ColorName}{RGB}{0,0,0} 
 ```
 
-## Layout names
+## Template's Layouts
 At this momment, UFGTeXPresentation has five option for slides' layout: **titlepage, vertical, horizontal, mainpoint,** and **blank**. You can see each layout appearance at the following figure:  
  ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/layouts.png) 
 
-## Table of commands
+## Summary of the Template's commands
 
 | Template Commands  | Number of Params | Type of Params | Example                                            |
 |--------------------|------------------|----------------|----------------------------------------------------|
