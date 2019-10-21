@@ -43,9 +43,9 @@ ATTENTION: When you use the commands *\setLayout* and *\setBGColor*, all later s
 | INFBlue       | 0, 92, 161  | DarkOrange  | 255, 152, 0  |
 | UFGBlue       | 0, 114, 185 | LightOrange | 255, 193, 7  |
 | PrimmaryColor | 63, 63, 63  | DarkGreen   | 91, 141, 8   |
-| DarkGray      | 63,63,63    | LightGreen  | 122, 188, 12 |
-| LightGray     | 150,150,150 | LightPurple | 191, 83, 219 |
-| Ocean         | 129,194,234 | DarkPurple  | 142, 36, 170 |
+| DarkGray      | 63, 63, 63    | LightGreen  | 122, 188, 12 |
+| LightGray     | 150, 150, 150 | LightPurple | 191, 83, 219 |
+| Ocean         | 129, 194, 234 | DarkPurple  | 142, 36, 170 |
 
 Despite the colors defined in the template, one can define his/her personalized color by using the following command:
 ```tex
