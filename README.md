@@ -45,7 +45,15 @@ After downloading or cloning this repository, you must edit the file **presentat
 \end{frame}
 ```
 
-> **ATTENTION:** When you use the commands *\setLayout* and *\setBGColor*, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands before the next slide.
+```tex
+\definecolor{MyColor}{RGB}{10, 115, 110} 
+\setBGColor{MyColor}
+\begin{frame}
+  % ... 
+\end{frame}
+```
+
+> **ATTENTION:** When you use the commands `\setLayout` and `\setBGColor`, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands just before the intendant slide.
 
 
 ## Template's colors
@@ -66,14 +74,7 @@ Despite the colors defined in the template, one can define his/her personalized 
 ```
 
 ## Layout names
-At this momment, UFGTeXPresentation has five option for slides' layout:
-  - titlepage
-  - vertical
-  - horizontal
-  - mainpoint
-  - blank
-
-You can see each layout appearance at the following figure:  
+At this momment, UFGTeXPresentation has five option for slides' layout: **titlepage, vertical, horizontal, mainpoint,** and **blank**. You can see each layout appearance at the following figure:  
  ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/layouts.png) 
 
 ## Table of commands
