@@ -1,17 +1,18 @@
-\documentclass[aspectratio=169,t]{beamer}
+\documentclass[aspectratio=169,t,xcolor=table]{beamer}
 \usepackage[utf8]{inputenc}
+
 
 \usetheme{Ufg}
 %--------------------------------------- Primary Definitions
-\setPrimaryColor{UFGBlue} % This command set the default Color, is possible to choose a custom color
+\setPrimaryColor{UFGBlue} % This command set the default Color, is also possible to choose a custom color
 
 % \setPrimaryColor{INFBlue} 
-% \setPrimaryColor{DarkOrange}
+% \setPrimaryColor{DarkPurple}
 
 \setLogos{lib/logos/infw.png}{lib/logos/infw2.png} %First one is logo in title slide (we recommend use a horizontal image), and second one is the logo used in the remaining slides (we recommend use a square image)
 
 
-%---------------------------------------PACKAGES --------------
+%---------------------------------------theorems--------------
 \newtheorem{conj}{Conjetura}
 \newtheorem{defi}{Definição}
 \newtheorem{teo}{Teorema}
@@ -20,6 +21,8 @@
 \newtheorem{cor}{Corolário}
 \newtheorem{ex}{Exemplo}
 \newtheorem{exer}{Exercício}
+\setbeamertemplate{theorems}[numbered]
+
 
 % --------------------------------------Title Slide Information
 \begin{document}
@@ -56,23 +59,6 @@
 %---------------------------------------------------------Slide2
 \section{First section}
 
- \begin{frame}{Problemas mais complexos}
-\footnotesize
-  \begin{ex}
-Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de um ou dois caracteres alfanuméricos, em que letras maiúsculas e minúsculas não são distinguidas. Além disso, um nome de variável deve começar com uma letra e deve ser diferente das cinco sequências de dois caracteres reservadas para o uso de comandos. Quantos nomes diferentes de variáveis são possíveis nesta versão do BASIC?
-  \end{ex}
-%\pause
-
-\begin{block}{Solução}
-Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas.
-  \end{block}
-
- \end{frame}
-
-%---------------------------------------------------------
-
-
-%-------------------------------------------------------Slide3
 \setLayout{vertical}
  \begin{frame}{Problemas mais complexos}
 \footnotesize
@@ -89,7 +75,7 @@ Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. S
 
 %---------------------------------------------------------
 
-%--------------------------------------------------------- Slide4
+%--------------------------------------------------------- Slide3
 %Example of the \pause command
 
 \begin{frame}
@@ -104,7 +90,7 @@ And finally everything will be there
 %---------------------------------------------------------
 
 
-%--------------------------------------------------------- Slide5
+%--------------------------------------------------------- Slide3
 %Two columns
 \section{Second section}
 
@@ -135,7 +121,7 @@ layout in some cases.
 %---------------------------------------------------------
 
 
-%---------------------------------------------------------Slide6
+%---------------------------------------------------------Slide4
 %Highlighting text
 \setLayout{vertical}
 \begin{frame}
@@ -162,7 +148,7 @@ Sample text in green box. The title of the block is ``Examples".
 
 
 
-%---------------------------------------------------------Slide7
+%---------------------------------------------------------Slide5
 \section{Preliminary Empirical Study}
 \setLayout{mainpoint}
 
@@ -171,7 +157,7 @@ Sample text in green box. The title of the block is ``Examples".
 
 %-------------------------------------------------------
 
-%---------------------------------------------------------Slide8
+%---------------------------------------------------------Slide6
 \setLayout{vertical}
  \begin{frame}{Problemas mais complexos}
 \footnotesize
@@ -182,13 +168,13 @@ Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de 
 
 \begin{block}{Solução}
 Considere $V$ o número de nomes possíveis de variáveis diferentes do BASIC. Seja $V_1$ a quantidade de varíaveis com um caractere e $V_2$ a quantidade de variáveis com dois caracteres. Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas.
-  \end{block}
+\end{block}
 
  \end{frame}
 
 %---------------------------------------------------------
 
-%---------------------------------------------------------Slide9
+%---------------------------------------------------------Slide7
 \subsection{Results}
 % Example of changing background color 
 \setLayout{vertical}

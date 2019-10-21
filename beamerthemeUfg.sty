@@ -4,6 +4,8 @@
 \usepackage[T1]{fontenc}
 \usepackage{array}
 \usepackage{ifthen}
+\usepackage{colortbl}
+\usepackage{adjustbox}
 \mode<presentation>
 
 \definecolor{INFBlue}{RGB}{0, 92, 161}
@@ -52,7 +54,7 @@
     \setbeamercolor{itemize/enumerate subsubbody}{fg=DarkGray}
     \setbeamercolor{alerted text}{fg=DarkOrange}
     \setbeamercolor{example text}{fg=DarkGreen}
-    \setbeamercolor{block title}{fg=UFGBlue}
+    \setbeamercolor{block title}{fg=PrimaryColor}
     \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 }
 
@@ -104,7 +106,7 @@
 \setbeamertemplate{footline}{
     \ifnum \insertpagenumber > 1
         \raisebox{7pt}[0pt][0pt]{
-            \makebox[\paperwidth]{\hfill\makebox[30pt]{\bfseries\scriptsize \insertframenumber/\inserttotalframenumber }}
+            \makebox[\paperwidth]{\hfill\makebox[30pt]{\bfseries\scriptsize\insertframenumber/\inserttotalframenumber }}
         }
     \fi
 }
@@ -112,15 +114,32 @@
 
 }
 
-
+%WORKING ON BLOCKS
 \setbeamertemplate{navigation symbols}{}
 
 \setbeamertemplate{block begin}{
-     \begin{tabular}{|m{\textwidth}}
-        \textbf{\insertblocktitle} \\
+\vspace{\fill}
+\begin{adjustbox}{max width=0.98\textwidth}
+     \begin{tabular}{!{\color{PrimaryColor}{\vrule width 4pt}}m{\textwidth}}\cellcolor[HTML]{f9f9f9}\\\cellcolor[HTML]{f9f9f9}
+      \begin{beamercolorbox}{block title} \usebeamerfont*{block title}\insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 }
-\setbeamertemplate{block end}{\end{tabular}
+\setbeamertemplate{block end}{\end{tabular}\end{adjustbox}}
+
+\setbeamertemplate{block alerted begin}{
+\vspace{\fill}
+\begin{adjustbox}{max width=0.98\textwidth}
+     \begin{tabular}{!{\color{DarkOrange}{\vrule width 4pt}}m{\textwidth}}\cellcolor[HTML]{f9f9f9}\\\cellcolor[HTML]{f9f9f9}
+      \begin{beamercolorbox}{alerted text} \usebeamerfont*{block title}\insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 }
+\setbeamertemplate{block alerted end}{\end{tabular}\end{adjustbox}}
+
+\setbeamertemplate{block example begin}{
+\vspace{\fill}
+\begin{adjustbox}{max width=0.98\textwidth}
+     \begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}m{\textwidth}}\cellcolor[HTML]{f9f9f9}\\\cellcolor[HTML]{f9f9f9}
+      \begin{beamercolorbox}{example text} \usebeamerfont*{block title}\insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
+}
+\setbeamertemplate{block example end}{\end{tabular}\end{adjustbox}}
 
 
 
