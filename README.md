@@ -8,9 +8,32 @@ A Latex template to help students, professors, or researchers from Universidade 
 ## How to use
 After downloading or cloning this repository, you must edit the file **presentation.tex** to fill the content of the presentation. Firstly, take a look at the "Primary Definitions" part, at the begin of such a **.tex**, and modify its parties, whether is needed. 
 
-To set the default color of the presentation, one may use the command \setPrimaryColor{color}. This command supports one of the colors defined by the template or any color defined by the user.  
+**To set the default color** of the presentation, you can use the command *\setPrimaryColor{color}*. This command supports one of the colors defined by the template or any color defined by the user.  
 
-To set the logo of the department or institute, from the authors take part,  one must use the command \setLogos{}{} to inform paths of two files. The first one is logo in title slide - we recommend using a horizontal image - and second one is the logo used in the remaining slides - we recommend using a square image.
+```tex
+\setPrimaryColor{UFGBlue} 
+```
+
+**To set the logo** of the department or institute, from the authors take part,  one must use the command *\setLogos{path/horizontal_logo}{path/squared_logo}* to inform paths of two files. The first one is logo in title slide - we recommend using a horizontal image - and the second one is the logo used in the remaining slides - we recommend using a square image.
+```tex
+\setLogos{lib/logos/infw.png}{lib/logos/infw2.png} 
+```
+
+**To define a layout** for a slide, you must use the command *\setLayout{layoutname}*, just informing the name of the layout you would like to use. This command must be placed before the command *\begin{frame}*, which define the init of a new slide.  
+
+```tex
+\setLayout{horizontal} 
+\begin{frame}
+  \frametitle{Table of Contents}
+  \tableofcontents
+\end{frame}
+```
+
+**To define a layout** for a slide, you must use the command *\setLayout{layoutname}*, just informing the name of the layout you would like to use.  This command must be placed before the command *\begin{frame}*, which define the init of a new slide.  
+
+**To define a color** for the background of a slide, you must use the command *\setBGColor{color}* informing a color. The color may be one of the templates’ colors or a personalized color defined by the user. 
+
+ATTENTION: When you use the commands *\setLayout* and *\setBGColor*, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands before the next slide.
 
 
 ## Table of colors
@@ -26,7 +49,8 @@ To set the logo of the department or institute, from the authors take part,  one
 
 Despite the colors defined in the template, one can define his/her personalized color by using the following command:
 ```tex
-\definecolor{ColorName}{RGB}{0,0,0} % First parameter is the color name and the last one is the RGB code of the color
+% First parameter is the color name and the last one is the RGB code of the color
+\definecolor{ColorName}{RGB}{0,0,0} 
 ```
 
 ## Layout names
@@ -37,7 +61,7 @@ At this momment, UFGTeXPresentation has five option for slides' layout:
   - mainpoint
   - blank
 
-Each Layout seens like the following figure:  
+You can see each layout appearance at the following figure:  
  ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/layouts.png) 
 
 ## Table of commands
