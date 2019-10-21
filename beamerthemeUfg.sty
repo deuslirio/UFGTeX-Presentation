@@ -116,13 +116,11 @@
 \setbeamertemplate{navigation symbols}{}
 
 \setbeamertemplate{block begin}{
-     \begin{tabular}{m{0.7\textwidth}}
-                \begin{flushleft}
-                   \selectfont \Huge \bfseries \insertframetitle
-                \end{flushleft}
-            
+     \begin{tabular}{|m{\textwidth}}
+        \textbf{\insertblocktitle} \\
 }
-\setbeamertemplate{block end}{}
+\setbeamertemplate{block end}{\end{tabular}
+}
 
 
 
