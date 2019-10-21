@@ -8,18 +8,18 @@ A Latex template to help students, professors, or researchers from Universidade 
 ## How to use
 After downloading or cloning this repository, you must edit the file **presentation.tex** to fill the content of the presentation. Firstly, take a look at the "Primary Definitions" part, at the begin of such a **.tex**, and modify its parties, whether is needed. 
 
-**To set the default color** of the presentation, you can use the command *\setPrimaryColor{color}*. This command supports one of the colors defined by the template or any color defined by the user.  
+**To set the default color** of the presentation, you can use the command `\setPrimaryColor{color}`. This command supports one of the colors defined by the template or any color defined by the user.  
 
 ```tex
 \setPrimaryColor{UFGBlue} 
 ```
 
-**To set the logo** of the department or institute, from the authors take part,  one must use the command *\setLogos{path/horizontal_logo}{path/squared_logo}* to inform paths of two files. The first one is logo in title slide - we recommend using a horizontal image - and the second one is the logo used in the remaining slides - we recommend using a square image.
+**To set the logo** of the department or institute, from the authors take part, you must use the command `\setLogos{path/horizontal_logo}{path/squared_logo}` to inform the paths of two files. The first one is the logo in title slide - we recommend using a horizontal image - and the second one is the logo used in the remaining slides - we recommend using a square image.
 ```tex
 \setLogos{lib/logos/infw.png}{lib/logos/infw2.png} 
 ```
 
-**To define a layout** for a slide, you must use the command *\setLayout{layoutname}*, just informing the name of the layout you would like to use. This command must be placed before the command *\begin{frame}*, which define the init of a new slide.  
+**To define a layout** for a slide, you must use the command `\setLayout{layoutname}`, just informing the name of the layout you would like to use. This command must be placed before the command `\begin{frame}` of the slide you would like to change.  
 
 ```tex
 \setLayout{horizontal} 
@@ -29,7 +29,7 @@ After downloading or cloning this repository, you must edit the file **presentat
 \end{frame}
 ```  
 
-**To define a color for the background** of a slide, you must use the command *\setBGColor{color}* informing a color. The color may be one of the templates’ colors or a personalized color defined by the user. 
+**To define a color for the background** of a slide, you must use the command `\setBGColor{color}` informing a color. This command must be placed before the command `\begin{frame}` of the slide you would like to change. The color may be one of the template’s colors or a personalized color defined by the user. 
 
 ```tex
 \setBGColor{DarkOrange}
@@ -45,10 +45,10 @@ After downloading or cloning this repository, you must edit the file **presentat
 \end{frame}
 ```
 
-ATTENTION: When you use the commands *\setLayout* and *\setBGColor*, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands before the next slide.
+> **ATTENTION:** When you use the commands *\setLayout* and *\setBGColor*, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands before the next slide.
 
 
-## Table of colors
+## Template's colors
 
 | Color Name    | RGB         | Color Name  | RGB          |
 |---------------|-------------|-------------|--------------|
@@ -85,7 +85,7 @@ You can see each layout appearance at the following figure:
 | setPrimaryColor    | 1                | Color          | \setPrimaryColor{UFGBlue}                          |
 | setLogos           | 2                | Image URL      | \setLogos{lib/logos/infw.png}{lib/logos/infw2.png} |
 
-## Other Latex Template
+## Other UFG Latex Template
 
 - [UFGTeXPoster](https://github.com/altinodantas/ufgtexposter)
 
@@ -93,4 +93,4 @@ You can see each layout appearance at the following figure:
 
 This project is a personal initiative, under open source and collaborative principles, which until now has no formal association with the Federal University of Goiás institution. Thus, this template is not an official artifact from such a university.
 
-If you have some comments or suggestion, let we know by sending email to deuslirio.junior@gmail.com or tinodantas@gmail.com.
+> If you have some comments or suggestion, let we know by sending email to deuslirio.junior@gmail.com or tinodantas@gmail.com.
