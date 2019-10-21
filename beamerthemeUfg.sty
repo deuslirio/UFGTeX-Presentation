@@ -1,7 +1,6 @@
-\ProvidesPackage{beamerthemeInfUfg}[2019/10/15]
+\ProvidesPackage{beamerthemeUfg}[2019/10/15]
 \usepackage[sfdefault]{roboto}  
 \usepackage{tikz}
-%% Option 'sfdefault' only if the base font of the document is to be sans serif
 \usepackage[T1]{fontenc}
 \usepackage{array}
 \usepackage{ifthen}
@@ -9,20 +8,21 @@
 
 \definecolor{INFBlue}{RGB}{0, 92, 161}
 \definecolor{UFGBlue}{RGB}{0, 114, 185}
-\definecolor{PrimmaryColor}{RGB}{63, 63, 63}
+\definecolor{PrimaryColor}{RGB}{63, 63, 63}
 
 \definecolor{DarkGray}{RGB}{63,63,63}
 \definecolor{LightGray}{RGB}{150,150,150}
 \definecolor{Ocean}{RGB}{129,194,234}
-\definecolor{white}{RGB}{255,255,255}
 \definecolor{DarkOrange}{RGB}{255, 152, 0}
 \definecolor{LightOrange}{RGB}{255, 193, 7}
 \definecolor{DarkGreen}{RGB}{91, 141, 8}
 \definecolor{LightGreen}{RGB}{122, 188, 12}
+\definecolor{LightPurple}{RGB}{191, 83, 219}
+\definecolor{DarkPurple}{RGB}{142, 36, 170}
 
 
-\newcommand{\setPrimmaryColor}[1]{
-    \colorlet{PrimmaryColor}{#1}
+\newcommand{\setPrimaryColor}[1]{
+    \colorlet{PrimaryColor}{#1}
 }
 
 \newcommand{\setLogos}[2]{
@@ -35,14 +35,14 @@
 }
 
 \newcommand{\setDefaultConfig}{
-    \color{DarkGray} %Primmary 
-    \setbeamercolor{bgcolor}{fg=PrimmaryColor}
+    \color{DarkGray} %Primary 
+    \setbeamercolor{bgcolor}{fg=PrimaryColor}
     \setbeamercolor{normal}{fg=DarkGray}
     \setbeamercolor{title}{fg=DarkGray}
     \setbeamercolor{frametitle}{fg=DarkGray}
-    \setbeamercolor{structure}{fg=PrimmaryColor}
+    \setbeamercolor{structure}{fg=PrimaryColor}
     \setbeamercolor{normal text}{fg=DarkGray,bg=white}
-    \setbeamercolor{section number projected}{bg=PrimmaryColor,fg=white}
+    \setbeamercolor{section number projected}{bg=PrimaryColor,fg=white}
     \setbeamercolor{itemize item}{fg=DarkGray}
     \setbeamercolor{itemize subitem}{fg=DarkGray}
     \setbeamercolor{itemize subsubitem}{fg=DarkGray}
@@ -119,7 +119,7 @@
 
 \setbeamersize{text margin left=0.05\textwidth}
 \setbeamersize{text margin right=0.15\textwidth}
-\setbeamercolor{bgcolor}{bg=PrimmaryColor}
+\setbeamercolor{bgcolor}{bg=PrimaryColor}
 
 
 % ----------------------------------Define layouts backgrounds
