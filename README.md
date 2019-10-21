@@ -27,11 +27,23 @@ After downloading or cloning this repository, you must edit the file **presentat
   \frametitle{Table of Contents}
   \tableofcontents
 \end{frame}
+```  
+
+**To define a color for the background** of a slide, you must use the command *\setBGColor{color}* informing a color. The color may be one of the templates’ colors or a personalized color defined by the user. 
+
+```tex
+\setBGColor{DarkOrange}
+\begin{frame}
+\frametitle{Pause Example}
+
+    \begin{itemize}
+        \item In this slide \pause
+        \item the text will be partially visible \pause
+        \item And finally everything will be there
+    \end{itemize}
+
+\end{frame}
 ```
-
-**To define a layout** for a slide, you must use the command *\setLayout{layoutname}*, just informing the name of the layout you would like to use.  This command must be placed before the command *\begin{frame}*, which define the init of a new slide.  
-
-**To define a color** for the background of a slide, you must use the command *\setBGColor{color}* informing a color. The color may be one of the templates’ colors or a personalized color defined by the user. 
 
 ATTENTION: When you use the commands *\setLayout* and *\setBGColor*, all later slides are affected. Thus, if you want to return to a previous layout or color, you must reuse the commands before the next slide.
 
