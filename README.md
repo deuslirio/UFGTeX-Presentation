@@ -5,6 +5,8 @@ A Latex template to help students, professors and/or researchers from Universida
 presentation slides in the format 16:9. The template provides different options to change its visual aspect as well as shows examples
 of exposing images, tables, and bibliography references.
 
+![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/figs/title_layout_print.png)
+
 ## Other Latex Template
 
 - [UFGTeXPoster](https://github.com/altinodantas/ufgtexposter)
