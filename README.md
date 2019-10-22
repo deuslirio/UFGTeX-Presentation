@@ -1,7 +1,7 @@
 ![UFGTeXPresentation logo](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/ufgtexpresentation.png)
 
 ## What is it?
-A Latex template to help students, professors, or researchers from Universidade Federal de Goiás (UFG) to prepare their presentation slides in the **format 16:9**. Besides presenting a modern design concept, UFGTeXPresentation provides different slides’ layouts and color schemas to personalize the presentation.
+A Latex template to help students, professors, or researchers from Universidade Federal de Goiás (UFG) to prepare their presentation slides in the **format 16:9**. This template is based on the version available in the Google Slides at [here](https://docs.google.com/presentation/d/1NSXSP5SnpIE0fsVCebAj9x2UfSAlGvlGEEt0zA_y2aE). Besides presenting a modern design concept, UFGTeXPresentation provides different slides’ layouts and color schemas to personalize the presentation.
 
 ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/title_layout_print.png)
 
