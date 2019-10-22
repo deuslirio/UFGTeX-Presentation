@@ -86,6 +86,10 @@ At this momment, UFGTeXPresentation has five option for slides' layout: **titlep
 | setPrimaryColor    | 1                | Color          | \setPrimaryColor{UFGBlue}                          |
 | setLogos           | 2                | Image URL      | \setLogos{lib/logos/infw.png}{lib/logos/infw2.png} |
 
+## UFGTeXPoster on Overleaf
+
+This project was fully developed on the [Overleaf](https://www.overleaf.com), an online LaTeX editor that has joined with another service called ShareLatex. Therefore, if you prefere working online in one of the services above, you may find UFGTexPresentation available in the official Overleaf's templates gallery at [here](https://www.overleaf.com/latex/templates/ufgtex-presentation/zhvynsrvwnrg).
+
 ## Other UFG Latex Template
 
 - [UFGTeXPoster](https://github.com/altinodantas/ufgtexposter)
