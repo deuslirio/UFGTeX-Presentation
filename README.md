@@ -6,7 +6,7 @@ A Latex template to help students, professors, or researchers from Universidade 
 ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/title_layout_print.png)
 
 ## How to use
-After downloading or cloning this repository, you must edit the file **presentation.tex** to fill the content of the presentation. Firstly, take a look at the "Primary Definitions" part, at the begin of such a **.tex**, and modify its parties, whether is needed. 
+After downloading or cloning this repository, you must edit the file **presentation.tex** to fill the content of the presentation. Firstly, take a look at the "Primary Definitions" part, at the begin of such a **.tex**, and modify its parties, whether is needed. if you compile the code without changing, it will look like [this](https://github.com/deuslirio/UFGTeX-Presentation/blob/master/figs/UFGTeX_Presentation.pdf). 
 
 **To set the default color** of the presentation, you can use the command `\setPrimaryColor{color}`. This command supports one of the colors defined by the template or any color defined by the user.  
 
