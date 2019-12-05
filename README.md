@@ -62,8 +62,8 @@ After downloading or cloning this repository, you must edit the file **presentat
 |---------------|-------------|-------------|--------------|
 | INFBlue       | 0, 92, 161  | DarkOrange  | 255, 152, 0  |
 | UFGBlue       | 0, 114, 185 | LightOrange | 255, 193, 7  |
-| PrimaryColor | 63, 63, 63  | DarkGreen   | 91, 141, 8   |
-| DarkGray      | 63, 63, 63    | LightGreen  | 122, 188, 12 |
+| PrimaryColor | 33, 33, 33  | DarkGreen   | 91, 141, 8   |
+| DarkGray      | 33, 33, 33    | LightGreen  | 122, 188, 12 |
 | LightGray     | 150, 150, 150 | LightPurple | 191, 83, 219 |
 | Ocean         | 129, 194, 234 | DarkPurple  | 142, 36, 170 |
 
