@@ -121,25 +121,25 @@
 
 \setbeamertemplate{block begin}{
 \vspace{\fill}
-\begin{adjustbox}{max width=0.98\textwidth}
-     \begin{tabular}{!{\color{PrimaryColor}{\vrule width 4pt}}>{\columncolor{VeryLightGray}}m{\textwidth}}\\
-      \begin{beamercolorbox}{block title} \usebeamerfont*{block title}\insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
+\begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+     \begin{tabular}{!{\color{PrimaryColor}{\vrule width 4pt}}m{\textwidth}}\cellcolor[HTML]{f9f9f9}
+      \begin{beamercolorbox}{block title} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 }
 \setbeamertemplate{block end}{\end{tabular}\end{adjustbox}}
 
 \setbeamertemplate{block alerted begin}{
 \vspace{\fill}
-\begin{adjustbox}{max width=0.98\textwidth}
-     \begin{tabular}{!{\color{DarkOrange}{\vrule width 4pt}}>{\columncolor{VeryLightGray}}m{\textwidth}}\\
-      \begin{beamercolorbox}{alerted text} \usebeamerfont*{block title}\insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
+\begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+     \begin{tabular}{!{\color{DarkOrange}{\vrule width 4pt}}m{\textwidth}}\cellcolor[HTML]{f9f9f9}
+      \begin{beamercolorbox}{alerted text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 }
 \setbeamertemplate{block alerted end}{\end{tabular}\end{adjustbox}}
 
 \setbeamertemplate{block example begin}{
 \vspace{\fill}
-\begin{adjustbox}{max width=0.98\textwidth}
-     \begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}>{\columncolor{VeryLightGray}}m{\textwidth}}\\
-      \begin{beamercolorbox}{example text} \usebeamerfont*{block title}\insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
+\begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+     \begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}m{\textwidth}}\cellcolor[HTML]{f9f9f9}
+      \begin{beamercolorbox}{example text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 }
 \setbeamertemplate{block example end}{\end{tabular}\end{adjustbox}}
 
