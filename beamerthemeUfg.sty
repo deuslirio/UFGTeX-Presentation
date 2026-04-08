@@ -32,7 +32,7 @@
 \newcommand{\setLogos}[2]{
     \pgfdeclareimage[height=12mm]{logo1_title}{#1}
     \pgfdeclareimage[height=10mm]{logo2_small}{#2}
-    \pgfdeclareimage[width=13mm]{logo2_medium}{#2}
+    \pgfdeclareimage[width=10mm]{logo2_medium}{#2}
     
     % set UFG logo
     \pgfdeclareimage[height=15mm]{logo3}{lib/logos/ufg_black.pdf}
@@ -121,7 +121,7 @@
 
 \setbeamertemplate{block begin}{
 	\vspace{\fill}
-	\begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+	\begin{adjustbox}{max width=0.98\textwidth,clip}
 		\begin{tabular}{!{\color{PrimaryColor}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
 			\begin{beamercolorbox}{block title} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 		}
@@ -129,7 +129,7 @@
 
 \setbeamertemplate{block alerted begin}{
 	\vspace{\fill}
-	\begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+	\begin{adjustbox}{max width=0.98\textwidth,clip}
 		\begin{tabular}{!{\color{DarkOrange}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
 			\begin{beamercolorbox}{alerted text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
 		}
@@ -137,7 +137,7 @@
 
 \setbeamertemplate{block example begin}{
 	\vspace{\fill}
-	\begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+	\begin{adjustbox}{max width=0.98\textwidth,clip}
 		\begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
 			\begin{beamercolorbox}{example text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text} 
 		}
@@ -168,7 +168,7 @@
                 \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
              }
             \put(0,0){\pgfuseimage{titlepage}}
-            \put(12,10){\pgfuseimage{logo1_title}}
+            \put(15,15){\pgfuseimage{logo1_title}}
             \put(345,25){\pgfuseimage{logo3}}
         \end{picture}
 
@@ -191,7 +191,7 @@
                 \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
              }
             \put(0,0){\pgfuseimage{horizontal}}
-            \put(10,5){\pgfuseimage{logo2_small}}
+            \put(15,6){\scalebox{0.8}{\pgfuseimage{logo2_small}}}
         \end{picture}
     }
     \setDefaultConfig
@@ -204,7 +204,7 @@
                 \begin{beamercolorbox}[wd=1.1\paperwidth,ht=\paperheight]{bgcolor}\end{beamercolorbox}
              }
             \put(0,0){\pgfuseimage{vertical}}
-            \put(410,205){\pgfuseimage{logo2_medium}}
+            \put(415,195){\pgfuseimage{logo2_medium}}
         \end{picture}
     }
 
