@@ -6,17 +6,17 @@ A Latex template to help students, professors, or researchers from Universidade 
 ![Template example](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/title_layout_print.png)
 
 ## How to use
-After downloading or cloning this repository, you must edit the file **presentation.tex** to fill the content of the presentation. Firstly, take a look at the "Primary Definitions" part, at the begin of such a **.tex**, and modify its parties, whether is needed. if you compile the code without changing, it will look like [this](https://github.com/deuslirio/UFGTeX-Presentation/blob/master/figs/UFGTeX_Presentation.pdf). 
+After downloading or cloning this repository, **copy** `presentation.tex` to a new file (e.g. `my-talk.tex`) and edit that copy. `presentation.tex` is a living reference showcase of all template features — keep it intact. Compile without changes to see [what it looks like](https://github.com/deuslirio/UFGTeX-Presentation/blob/master/figs/UFGTeX_Presentation.pdf).
 
-**To set the default color** of the presentation, you can use the command `\setPrimaryColor{color}`. This command supports one of the colors defined by the template or any color defined by the user.  
+**To set the default color** of the presentation, use `\setPrimaryColor{color}`. Supports any template color or a user-defined color.
 
 ```tex
 \setPrimaryColor{UFGBlue} 
 ```
 
-**To set the logo** of the department or institute, from the authors take part, you must use the command `\setLogos{path/horizontal_logo}{path/squared_logo}` to inform the paths of two files. The first one is the logo in title slide - we recommend using a horizontal image - and the second one is the logo used in the remaining slides - we recommend using a square image.
+**To set the logo** use `\setLogos{path/title_logo}{path/slide_logo}`. First path is used on the title slide, second on all other slides.
 ```tex
-\setLogos{lib/logos/infw.png}{lib/logos/infw2.png} 
+\setLogos{lib/logos/INF-full-white.png}{lib/logos/INF-compact-white.png} 
 ```
 
 **To define a layout** for a slide, you must use the command `\setLayout{layoutname}`, just informing the name of the layout you would like to use. This command must be placed before the command `\begin{frame}` of the slide you would like to change.  
@@ -58,14 +58,20 @@ After downloading or cloning this repository, you must edit the file **presentat
 
 ## Template's Colors
 
-| Color Name    | RGB         | Color Name  | RGB          |
-|---------------|-------------|-------------|--------------|
-| INFBlue       | 0, 92, 161  | DarkOrange  | 255, 152, 0  |
-| UFGBlue       | 0, 114, 185 | LightOrange | 255, 193, 7  |
-| PrimaryColor | 33, 33, 33  | DarkGreen   | 91, 141, 8   |
-| DarkGray      | 33, 33, 33    | LightGreen  | 122, 188, 12 |
-| LightGray     | 150, 150, 150 | LightPurple | 191, 83, 219 |
-| Ocean         | 129, 194, 234 | DarkPurple  | 142, 36, 170 |
+| Color Name    | RGB           | Hex       |
+|---------------|---------------|-----------|
+| UFGBlue       | 0, 114, 185   | #0072B9   |
+| INFBlue       | 0, 92, 161    | #005CA1   |
+| DarkOrange    | 255, 152, 0   | #FF9800   |
+| LightOrange   | 255, 193, 7   | #FFC107   |
+| DarkGreen     | 91, 141, 8    | #5B8D08   |
+| LightGreen    | 122, 188, 12  | #7ABC0C   |
+| DarkPurple    | 142, 36, 170  | #8E24AA   |
+| LightPurple   | 191, 83, 219  | #BF53DB   |
+| Ocean         | 129, 194, 234 | #81C2EA   |
+| DarkGray      | 33, 33, 33    | #212121   |
+| LightGray     | 150, 150, 150 | #969696   |
+| VeryLightGray | 249, 249, 249 | #F9F9F9   |
 
 Despite the colors defined in the template, one can define his/her personalized color by using the following command:
 ```tex
@@ -79,16 +85,31 @@ At this momment, UFGTeXPresentation has five option for slides' layout: **titlep
 
 ## Summary of the Template's commands
 
-| Template Commands  | Number of Params | Type of Params | Example                                            |
-|--------------------|------------------|----------------|----------------------------------------------------|
-| setLayout          | 1                | Layout         | \setLayout{vertical}                               |
-| setBGColor         | 1                | Color          | \setBGColor{DarkPurple}                            |
-| setPrimaryColor    | 1                | Color          | \setPrimaryColor{UFGBlue}                          |
-| setLogos           | 2                | Image URL      | \setLogos{lib/logos/infw.png}{lib/logos/infw2.png} |
+| Command           | Params | Example                                                        |
+|-------------------|--------|----------------------------------------------------------------|
+| `\setLayout`      | 1      | `\setLayout{vertical}` — vertical, horizontal, blank, mainpoint, titlepage |
+| `\setBGColor`     | 1      | `\setBGColor{DarkPurple}`                                      |
+| `\setPrimaryColor`| 1      | `\setPrimaryColor{UFGBlue}` — preamble only                    |
+| `\setLogos`       | 2      | `\setLogos{lib/logos/INF-full-white.png}{lib/logos/INF-compact-white.png}` |
+| `\sectionslide`   | 1 + optional color | `\sectionslide[DarkPurple]{Section Title}`           |
+| `\profilephoto`   | 2 + optional size  | `\profilephoto[3.2cm]{figs/photo.png}{FL}`           |
+| `\stat`           | 2      | `\stat{73\%}{teams adopted AI}` — large metric display         |
+| `\statsep`        | 0      | vertical rule separator between `\stat` columns                |
+| `\quoteblock`     | 2      | `\quoteblock{Quote text.}{Author, Year}`                       |
 
-## UFGTeXPoster on Overleaf
+## AI Assistant Support
 
-This project was fully developed on the [Overleaf](https://www.overleaf.com), an online LaTeX editor that has joined with another service called ShareLatex. Therefore, if you prefere working online in one of the services above, you may find UFGTexPresentation available in the official Overleaf's templates gallery at [here](https://www.overleaf.com/latex/templates/ufgtex-presentation/zhvynsrvwnrg).
+This template includes guides for AI assistants:
+
+- **`AGENTS.md`** — universal guide for any AI assistant (Claude, Copilot, Cursor, Gemini). Contains layout rules, block patterns, color palette, column constraints, TikZ patterns, and common mistakes. Read automatically by assistants that support project-level context files.
+
+- **`.claude/skills/`** — Claude Code skill that activates automatically when editing slides. Provides interactive checklists (bio photo, section color strategy) and detailed generation guidance on top of `AGENTS.md`.
+
+Both files are kept in sync. To start a new presentation, copy `presentation.tex` rather than editing it directly — it serves as the living reference showcase.
+
+## UFGTeX-Presentation on Overleaf
+
+This project was fully developed on [Overleaf](https://www.overleaf.com). You may find UFGTeX-Presentation available in the official Overleaf templates gallery [here](https://www.overleaf.com/latex/templates/ufgtex-presentation/zhvynsrvwnrg).
 
 ## Other UFG Latex Template
 
