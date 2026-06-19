@@ -92,7 +92,7 @@
 
 
 %==========================================================
-\sectionslide[DarkPurple]{Layouts}
+\section[DarkPurple]{Layouts}
 
 %--------------------------------------------------------
 \setLayout{vertical}
@@ -203,23 +203,27 @@
 
 %--------------------------------------------------------
 \setLayout{horizontal}
-\begin{frame}{Section Slides with \texttt{\textbackslash sectionslide}}
+\begin{frame}{Section Slides with \texttt{\textbackslash section}}
 
     \begin{columns}
         \column{0.5\textwidth}
         \begin{block}{With color}
-            \texttt{\textbackslash sectionslide[DarkPurple]\{Title\}}
+            \texttt{\textbackslash section[DarkPurple]\{Title\}}
         \end{block}
         \column{0.5\textwidth}
-        \begin{block}{Default color (DarkGray)}
-            \texttt{\textbackslash sectionslide\{Title\}}
+        \begin{block}{Default (DarkGray)}
+            \texttt{\textbackslash section\{Title\}}
         \end{block}
     \end{columns}
+    \vspace{0.5em}
+    \begin{block}{Color + short TOC title}
+        \texttt{\textbackslash section[UFGBlue][Short]\{Long Title\}}
+    \end{block}
 
 \end{frame}
 
 %==========================================================
-\sectionslide[DarkOrange]{Blocks}
+\section[DarkOrange]{Blocks}
 
 %--------------------------------------------------------
 \setLayout{vertical}
@@ -259,7 +263,7 @@
 
 
 %==========================================================
-\sectionslide[UFGBlue]{Columns and Images}
+\section[UFGBlue]{Columns and Images}
 
 %--------------------------------------------------------
 \setLayout{horizontal}
@@ -313,7 +317,7 @@
 
 
 %==========================================================
-\sectionslide[DarkGray]{TikZ Diagrams}
+\section[DarkGray]{TikZ Diagrams}
 
 %--------------------------------------------------------
 \setLayout{vertical}
@@ -351,7 +355,7 @@
 
 
 %==========================================================
-\sectionslide[DarkGreen]{Metrics and Quotes}
+\section[DarkGreen]{Metrics and Quotes}
 
 %--------------------------------------------------------
 \setLayout{blank}
@@ -378,7 +382,7 @@
 
 
 %==========================================================
-\sectionslide[LightPurple]{Tables and Code}
+\section[LightPurple]{Tables and Code}
 
 %--------------------------------------------------------
 \setLayout{vertical}
@@ -422,14 +426,7 @@ print(output)  # everyone creates, responsibility remains
 
 
 %==========================================================
-\section*{Anti-patterns — what not to do}
-%==========================================================
-
-\setLayout{mainpoint}
-\setBGColor{DarkOrange}
-\begin{frame}{}
-    \frametitle{Anti-patterns}
-\end{frame}
+\section[DarkOrange]{Anti-patterns — what not to do}
 
 %--------------------------------------------------------
 \setLayout{vertical}

@@ -91,7 +91,7 @@ At this momment, UFGTeXPresentation has five option for slides' layout: **titlep
 | `\setBGColor`     | 1      | `\setBGColor{DarkPurple}`                                      |
 | `\setPrimaryColor`| 1      | `\setPrimaryColor{UFGBlue}` — preamble only                    |
 | `\setLogos`       | 2      | `\setLogos{lib/logos/INF-full-white.png}{lib/logos/INF-compact-white.png}` |
-| `\sectionslide`   | 1 + optional color | `\sectionslide[DarkPurple]{Section Title}`           |
+| `\section`        | 1 + optional color + optional short title | `\section[DarkPurple]{Section Title}` · `\section[UFGBlue][Short]{Long Title}` |
 | `\profilephoto`   | 2 + optional size  | `\profilephoto[3.2cm]{figs/photo.png}{FL}`           |
 | `\stat`           | 2      | `\stat{73\%}{teams adopted AI}` — large metric display         |
 | `\statsep`        | 0      | vertical rule separator between `\stat` columns                |
