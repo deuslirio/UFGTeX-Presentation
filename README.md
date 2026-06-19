@@ -1,5 +1,18 @@
 ![UFGTeXPresentation logo](https://raw.githubusercontent.com/deuslirio/UFGTeX-Presentation/master/readme/ufgtexpresentation.png)
 
+**Repository:** [github.com/deuslirio/UFGTeX-Presentation](https://github.com/deuslirio/UFGTeX-Presentation) — if this template helped you, consider leaving a ⭐ on GitHub!
+
+## AI Assistant Support
+
+This template includes guides for AI assistants (Claude, Copilot, Cursor, Gemini, etc.):
+
+- **`AGENTS.md`** — universal guide for any AI assistant. Contains layout rules, block patterns, color palette, column constraints, TikZ patterns, and common mistakes. Read automatically by assistants that support project-level context files.
+- **`.claude/skills/`** — Claude Code skill that activates automatically when editing slides. Provides interactive checklists and detailed generation guidance on top of `AGENTS.md`.
+
+Both files are kept in sync. To start a new presentation, copy `presentation.tex` rather than editing it directly — it serves as the living reference showcase.
+
+---
+
 ## What is it?
 A Latex template to help students, professors, or researchers from Universidade Federal de Goiás (UFG) to prepare their presentation slides in the **format 16:9**. This template is based on the version available in the Google Slides at [here](https://docs.google.com/presentation/d/1NSXSP5SnpIE0fsVCebAj9x2UfSAlGvlGEEt0zA_y2aE). Besides presenting a modern design concept, UFGTeXPresentation provides different slides’ layouts and color schemas to personalize the presentation.
 
@@ -97,15 +110,6 @@ At this momment, UFGTeXPresentation has five option for slides' layout: **titlep
 | `\statsep`        | 0      | vertical rule separator between `\stat` columns                |
 | `\quoteblock`     | 2      | `\quoteblock{Quote text.}{Author, Year}`                       |
 
-## AI Assistant Support
-
-This template includes guides for AI assistants:
-
-- **`AGENTS.md`** — universal guide for any AI assistant (Claude, Copilot, Cursor, Gemini). Contains layout rules, block patterns, color palette, column constraints, TikZ patterns, and common mistakes. Read automatically by assistants that support project-level context files.
-
-- **`.claude/skills/`** — Claude Code skill that activates automatically when editing slides. Provides interactive checklists (bio photo, section color strategy) and detailed generation guidance on top of `AGENTS.md`.
-
-Both files are kept in sync. To start a new presentation, copy `presentation.tex` rather than editing it directly — it serves as the living reference showcase.
 
 ## UFGTeX-Presentation on Overleaf
 

@@ -3,6 +3,8 @@
 Template guide for AI assistants (Claude, Copilot, Cursor, Gemini, etc.).
 Reference this file when writing or editing slides for this Beamer template.
 
+**Repository (latest version):** [github.com/deuslirio/UFGTeX-Presentation](https://github.com/deuslirio/UFGTeX-Presentation)
+
 ---
 
 ## Starting a new presentation

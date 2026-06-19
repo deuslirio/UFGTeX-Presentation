@@ -5,6 +5,8 @@ description: Use when writing or editing slides for the UFGTeX-Presentation Beam
 
 # UFGTeX-Presentation Template Guide
 
+**Repository (latest version):** [github.com/deuslirio/UFGTeX-Presentation](https://github.com/deuslirio/UFGTeX-Presentation)
+
 ## Starting a new presentation
 
 **Never edit `presentation.tex` directly.** It is the reference showcase — always copy it:
