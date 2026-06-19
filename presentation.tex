@@ -1,43 +1,33 @@
 \documentclass[aspectratio=169,t,xcolor=table]{beamer}
 \usepackage[utf8]{inputenc}
-
-\usepackage{booktabs} 
+\usepackage[brazil]{babel}
+\usepackage{booktabs}
 \usepackage{subcaption}
+\usepackage{listings}
 
 \usetheme{Ufg}
+\usetikzlibrary{positioning}
 
-%-------------------------------------theorems--------------
-\newtheorem{conj}{Conjetura}
-\newtheorem{defi}{Definição}
-\newtheorem{teo}{Teorema}
-\newtheorem{lema}{Lema}
-\newtheorem{prop}{Proposição}
-\newtheorem{cor}{Corolário}
-\newtheorem{ex}{Exemplo}
-\newtheorem{exer}{Exercício}
-
-\setbeamertemplate{theorems}[numbered]
 \setbeamertemplate{caption}[numbered]
 
-%-------------------------------------------------------------%
-%----------------------- Primary Definitions -----------------%
+\AtBeginSection[]{%
+    \setLayout{mainpoint}%
+    \setBGColor{\currentsectioncolor}%
+    \begin{frame}[noframenumbering]{}%
+        \frametitle{\insertsectionhead}%
+    \end{frame}%
+    \setLayout{vertical}%
+}
 
-% This command set the default Color, is also possible to choose a custom color
-\setPrimaryColor{UFGBlue} 
+\setPrimaryColor{UFGBlue}
+\setLogos{lib/logos/INF-compact-white.png}{lib/logos/INF-compact-white.png}
 
-% First one is logo in title slide (we recommend use a horizontal image), and second one is the logo used in the remaining slides (we recommend use a square image)
-\setLogos{lib/logos/infufgw.png}{lib/logos/infufgw.png} 
-
-
-% -------------------------------------- Title Slide Information
 \begin{document}
-\title[Inf UFG]{Apresentações Instituto de informática}
-\subtitle{Template Latex}
 
+\title[UFGTeX]{Template Components}
+\subtitle{UFGTeX-Presentation — Showcase}
 \author{Altino Dantas\inst{1} \and Deuslirio Junior\inst{2}}
-
-\institute[UFG] % (optional)
-{
+\institute[UFG]{%
   \inst{1}%
   Instituto de Informática\\
   Federal University of Goiás
@@ -46,216 +36,482 @@
   Instituto de Informática\\
   Federal University of Goiás
 }
-\date{2019}
-%-----------------------The next statement creates the title page.
+\date{2026}
+
 \frame[noframenumbering]{\titlepage}
 
+%---------------------------------------------------------
+\setLayout{horizontal}
+\begin{frame}{Who am I}
 
-%------------------------------------------------Slide 1
-\setLayout{vertical} % This command define the layout. 'vertical' can be replace with 'horizontal', 'blank, 'mainpoint', 'titlepage'
+    \begin{columns}
+        \column{0.6\textwidth}
+        \textbf{First Last}
+        \begin{itemize}
+            \item Role — \textbf{Organization}
+            \item PhD in Computer Science
+            \item Research: LLM agents in Software Engineering
+        \end{itemize}
 
-\begin{frame}
-    \frametitle{Table of Contents}
+        \vspace{0.5em}
+        \textbf{Previously at:}
+        \begin{itemize}
+            \item \textbf{Company A} — area of work
+            \item \textbf{Company B} — area of work
+        \end{itemize}
+
+        \column{0.4\textwidth}
+        \begin{center}
+            \profilephoto[3.2cm]{figs/photo.png}{FL}
+        \end{center}
+    \end{columns}
+
+\end{frame}
+
+%---------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{Agenda}
     \tableofcontents
 \end{frame}
-%---------------------------------------------------------
+
+%--------------------------------------------------------
+\begin{frame}{AI Assistance}
+
+    This template includes a guide for AI assistants (Claude, Copilot, Cursor, Gemini, etc.).
+
+    \begin{block}{AGENTS.md — at the project root}
+        Machine-readable guide with layout rules, block patterns, column constraints, color palette, and common mistakes. Any AI assistant that reads project files will use it automatically.
+    \end{block}
+
+    \vspace{0.5em}
+    \begin{recommendationblock}{Claude Code users}
+        A dedicated skill is configured at \texttt{.claude/skills/}. It is invoked automatically when editing slides and includes interactive checklists (bio photo, section color strategy).
+    \end{recommendationblock}
+
+\end{frame}
 
 
-%---------------------------------------------------------Slide 2
-\section{Common presentation elements}
+%==========================================================
+\sectionslide[DarkPurple]{Layouts}
 
-\subsection{Box}
-
+%--------------------------------------------------------
 \setLayout{vertical}
-\begin{frame}{Example on using box}
+\begin{frame}{Vertical Layout}
 
-    \footnotesize
-    
-    \begin{ex}
-        Em uma versão da linguagem BASIC, o nome de uma variável é uma sequência de um ou dois caracteres alfanuméricos, em que letras maiúsculas e minúsculas não são distinguidas. Além disso, um nome de variável deve começar com uma letra e deve ser diferente das cinco sequências de dois caracteres reservadas para o uso de comandos. Quantos nomes diferentes de variáveis são possíveis nesta versão do BASIC?
-    \end{ex}
-    
-    \begin{block}{Solução}
-        Pela regra da soma, $V=V_1+V_2$. Como as variáveis só podem começar com letras, temos que $V_1=26$. Pela regra do produto, há $26\cdot 36=936$ sequências de tamanho $2$ que comecem com uma letra e terminam com um caracter alfanumérico. Porém, não se deve usar $5$ variáveis reservadas. Assim, $V_2=26\cdot 36-5=931$. Logo, há $V=V_1+V_2 = 26+931=957$ nomes diferentes para variáveis nesta versão do BASIC.
+    Default layout for general content. Right sidebar with logo.
+
+    \begin{itemize}
+        \item Right sidebar (\textasciitilde 20\% of slide width)
+        \item Dark text on light background
+        \item \texttt{\textbackslash textwidth} $\approx 80\%$ of slide
+    \end{itemize}
+
+    \vspace{0.5em}
+    \begin{block}{When to use}
+        Lists, blocks, tables, diagrams, body text. Any slide that does not require side-by-side columns.
     \end{block}
 
 \end{frame}
-%---------------------------------------------------------
+
+%--------------------------------------------------------
+\setLayout{horizontal}
+\begin{frame}{Horizontal Layout}
+
+    Decorative bar at the bottom. Less vertical space available.
+
+    \begin{columns}
+        \column{0.55\textwidth}
+        \begin{itemize}
+            \item Horizontal bar at the base
+            \item Logo at the bottom-left corner
+            \item Preferred for two-column content
+        \end{itemize}
+
+        \vspace{0.5em}
+        \begin{block}{When to use}
+            Diagram or visual alongside descriptive text. Any side-by-side layout.
+        \end{block}
+
+        \column{0.45\textwidth}
+        \begin{center}
+        \begin{tikzpicture}[
+            vnode/.style={circle, minimum size=1.5cm, align=center,
+                          font=\scriptsize\bfseries, text=white}
+        ]
+            \coordinate (A) at (0,    2.6);
+            \coordinate (B) at (-1.8, 0.3);
+            \coordinate (C) at ( 1.8, 0.3);
+            \draw[thick, gray!35] (A) -- (B) -- (C) -- cycle;
+            \node[vnode, fill=UFGBlue]    at (A) {A};
+            \node[vnode, fill=DarkOrange] at (B) {B};
+            \node[vnode, fill=DarkGreen]  at (C) {C};
+        \end{tikzpicture}
+        \end{center}
+    \end{columns}
+
+\end{frame}
+
+%--------------------------------------------------------
+\setLayout{blank}
+\setBGColor{DarkGray}
+\begin{frame}{Blank Layout}
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Characteristics}
+        \begin{itemize}
+            \item Solid background in \texttt{bgcolor}
+            \item Text automatically white
+            \item No sidebar or bottom bar
+            \item Change color with \texttt{\textbackslash setBGColor\{\}}
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{block}{When to use}
+            Emphasis slides with color: large metrics (\texttt{\textbackslash stat}), impactful quotes, closing. Not for regular content.
+        \end{block}
+    \end{columns}
+
+\end{frame}
 
 
-%--------------------------------------------------------- Slide 3
-\subsection{Table}
+%--------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{Color Palette}
 
-\begin{frame}{Example on using table}
+    \renewcommand{\arraystretch}{1.6}
+    \setlength{\tabcolsep}{4pt}
+    \begin{tabular}{p{2.8cm}p{2.8cm}p{2.8cm}p{2.8cm}}
+        \cellcolor{UFGBlue}{\color{white}\small\texttt{UFGBlue}\newline\tiny\texttt{\#0072B9}} &
+        \cellcolor{DarkOrange}{\color{DarkGray}\small\texttt{DarkOrange}\newline\tiny\texttt{\#FF9800}} &
+        \cellcolor{DarkGreen}{\color{white}\small\texttt{DarkGreen}\newline\tiny\texttt{\#5B8D08}} &
+        \cellcolor{DarkPurple}{\color{white}\small\texttt{DarkPurple}\newline\tiny\texttt{\#8E24AA}} \\
+        \cellcolor{INFBlue}{\color{white}\small\texttt{INFBlue}\newline\tiny\texttt{\#005CA1}} &
+        \cellcolor{LightOrange}{\color{DarkGray}\small\texttt{LightOrange}\newline\tiny\texttt{\#FFC107}} &
+        \cellcolor{LightGreen}{\color{DarkGray}\small\texttt{LightGreen}\newline\tiny\texttt{\#7ABC0C}} &
+        \cellcolor{LightPurple}{\color{white}\small\texttt{LightPurple}\newline\tiny\texttt{\#BF53DB}} \\
+        \cellcolor{Ocean}{\color{DarkGray}\small\texttt{Ocean}\newline\tiny\texttt{\#81C2EA}} &
+        \cellcolor{DarkGray}{\color{white}\small\texttt{DarkGray}\newline\tiny\texttt{\#212121}} &
+        \cellcolor{LightGray}{\color{DarkGray}\small\texttt{LightGray}\newline\tiny\texttt{\#969696}} &
+        \cellcolor{VeryLightGray}{\color{DarkGray}\small\texttt{VeryLightGray}\newline\tiny\texttt{\#F9F9F9}} \\
+    \end{tabular}
+
+    \vspace{0.5em}
+    {\small Mixing: \texttt{UFGBlue!60}, \texttt{DarkOrange!80!black} — works anywhere xcolor is accepted.}
+
+\end{frame}
+
+%--------------------------------------------------------
+\begin{frame}[fragile]{Section Slides with \texttt{\textbackslash sectionslide}}
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{block}{With color}
+            \texttt{\textbackslash sectionslide[DarkPurple]\{Title\}}
+        \end{block}
+        \column{0.5\textwidth}
+        \begin{block}{Default color (DarkGray)}
+            \texttt{\textbackslash sectionslide\{Title\}}
+        \end{block}
+    \end{columns}
+
+\end{frame}
+
+%==========================================================
+\sectionslide[DarkOrange]{Blocks}
+
+%--------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{Block types}
+
+    \begin{block}{Block — general content}
+        PrimaryColor border. Summaries, definitions, neutral notes.
+    \end{block}
+
+    \vspace{0.5em}
+
+    \begin{alertblock}{Alert Block — warning or risk}
+        DarkOrange border. Tensions, dangers, counterpoints.
+    \end{alertblock}
+
+    \vspace{0.5em}
+
+    \begin{recommendationblock}{Recommendation Block — suggestion}
+        DarkGreen border. Best practices, actionable recommendations.
+    \end{recommendationblock}
+
+\end{frame}
+
+%--------------------------------------------------------
+\begin{frame}{Examples block and inline highlight}
+
+    \begin{examples}
+        Built-in Beamer environment. Green border with no extra setup. Title auto-translated via \texttt{babel}. Use only for real examples — not as a generic green block.
+    \end{examples}
+
+    \vspace{0.8em}
+
+    Text with \alert{orange highlight} via \texttt{\textbackslash alert\{\}}.
+    Use sparingly to preserve impact.
+
+\end{frame}
+
+
+%==========================================================
+\sectionslide[UFGBlue]{Columns and Images}
+
+%--------------------------------------------------------
+\setLayout{horizontal}
+\begin{frame}{Symmetric columns — 0.5 + 0.5}
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Column A — advantages}
+        \begin{itemize}
+            \item Positive item 1
+            \item Positive item 2
+            \item Positive item 3
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \textbf{Column B — costs}
+        \begin{itemize}
+            \item Cost 1
+            \item Cost 2
+            \item \alert{Hidden cost}
+        \end{itemize}
+    \end{columns}
+
+\end{frame}
+
+%--------------------------------------------------------
+\setLayout{horizontal}
+\begin{frame}{Asymmetric columns — 0.6 + 0.4 (text + image)}
+
+    \begin{columns}
+        \column{0.6\textwidth}
+        \textbf{When to use 0.6 + 0.4}
+        \begin{itemize}
+            \item Image or diagram needs breathing room
+            \item Text side carries the narrative
+            \item Heavier content on the left balances visually
+        \end{itemize}
+
+        \vspace{0.5em}
+        \begin{block}{Tip}
+            Keep image width to \texttt{0.9\textbackslash textwidth} of its column to preserve padding.
+        \end{block}
+
+        \column{0.4\textwidth}
+        \begin{center}
+            \includegraphics[width=0.9\textwidth]{figs/photo.png}
+        \end{center}
+    \end{columns}
+
+\end{frame}
+
+
+%==========================================================
+\sectionslide[DarkGray]{TikZ Diagrams}
+
+%--------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{Hierarchy diagram}
+
+\begin{center}
+\begin{tikzpicture}[
+    rect/.style={rectangle, rounded corners=5pt, minimum height=0.72cm,
+                 align=center, font=\small\bfseries, text=white},
+    arr/.style={->, thick, color=gray!50},
+    darr/.style={->, thick, dashed, color=UFGBlue!60}
+]
+    \node[rect, fill=DarkOrange,          minimum width=9.5cm] (top)  at (0, 3.2)
+        {Level 1 — Executives};
+    \node[rect, fill=DarkPurple,          minimum width=4.5cm] (l)    at (-2.6, 2.2)
+        {Level 2A};
+    \node[rect, fill=UFGBlue,             minimum width=4.5cm] (r)    at ( 2.6, 2.2)
+        {Level 2B};
+    \node[rect, fill=DarkGray,            minimum width=9.5cm] (bot)  at (0, 1.2)
+        {\textit{Level 3 — cross-cutting}};
+
+    \draw[arr]  (top.south) -- ++(0,-0.15) -| (l.north);
+    \draw[arr]  (top.south) -- ++(0,-0.15) -| (r.north);
+    \draw[darr] (l.south)   -- ++(0,-0.15) -| (bot.north);
+    \draw[darr] (r.south)   -- ++(0,-0.15) -| (bot.north);
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.2em}
+\begin{block}{}
+    Solid arrows = direct hierarchy. Dashed = secondary or implicit relation.
+\end{block}
+
+\end{frame}
+
+
+%==========================================================
+\sectionslide[DarkGreen]{Metrics and Quotes}
+
+%--------------------------------------------------------
+\setLayout{blank}
+\setBGColor{UFGBlue}
+\begin{frame}{Metrics with \texttt{\textbackslash stat}}
+
+    \begin{columns}[c]
+        \column{0.3\textwidth}  \stat{73\%}{teams adopted generative AI}
+        \column{0.03\textwidth} \statsep
+        \column{0.3\textwidth}  \stat{12x}{faster code generation}
+        \column{0.03\textwidth} \statsep
+        \column{0.3\textwidth}  \stat{15 days}{average adoption time}
+    \end{columns}
+
+\end{frame}
+
+%--------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{Quote with \texttt{\textbackslash quoteblock}}
+
+    \quoteblock{AI redistributes who gets to create. That is real, it is positive, and there is no going back. What does not change is that creation produces artifacts that must be maintained, operated and evolved by people.}{Deuslirio Junior, 2026}
+
+\end{frame}
+
+
+%==========================================================
+\sectionslide[LightPurple]{Tables and Code}
+
+%--------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{Table with booktabs}
 
     \begin{table}[]
         \centering
-        \caption{\label{tab:1}Countries and their codes}
-        
+        \caption{Layout comparison}
         \renewcommand{\arraystretch}{1.5}
         \setlength{\tabcolsep}{10pt}
-        
         {\rowcolors{2}{}{LightGray!10}
-            \begin{tabular}{ p{3cm}p{3cm}p{3cm}  }
-                \toprule 
-                \textbf{Country Name} & \textbf{Code 2} & \textbf{Code 3} \\
+            \begin{tabular}{p{2.5cm}p{3.5cm}p{4cm}}
+                \toprule
+                \textbf{Layout}    & \textbf{Visual marker}    & \textbf{Typical use}          \\
                 \midrule
-                Afghanistan & AF &AFG \\
-                Aland Islands & AX   & ALA \\
-                Albania &AL & ALB \\
-                Algeria    &DZ & DZA \\
+                vertical           & Right sidebar             & General content               \\
+                horizontal         & Bottom bar                & Diagram + side text           \\
+                blank              & Solid background          & Emphasis, closing             \\
+                mainpoint          & Solid bg + overlay        & Section transition            \\
                 \bottomrule
             \end{tabular}
         }
     \end{table}
-    
+
 \end{frame}
-%---------------------------------------------------------
 
-\subsection{Image}
+%--------------------------------------------------------
+\begin{frame}[fragile]{Code with lstlisting}
 
-%--------------------------------------------------------- Slide 4
-\begin{frame}{Example on using image}
+    \begin{lstlisting}[language=Python, caption=Redistributing access with AI]
+def apply_ai(team: list[str], tool: str) -> dict:
+    # redistributes access to creation across all roles
+    return {member: tool for member in team}
 
-    \begin{figure}
-        \centering
-        \includegraphics[width=.9\textwidth]{readme/layouts.png}
-        \caption{Template's Layouts.}
-        \label{fig:layouts}
-    \end{figure}
-    
+roles = ["dev", "pm", "designer", "exec"]
+output = apply_ai(roles, "claude-code")
+print(output)  # everyone creates, responsibility remains
+    \end{lstlisting}
+
 \end{frame}
-%---------------------------------------------------------
 
 
-%--------------------------------------------------------- Slide 5
-\section{Changing colors and Layouts}
-
-\setLayout{blank} % Example of changing layout
-\setBGColor{DarkOrange}  %Example of changing background color 
-
-\begin{frame}{Clean layout and two-column text}
-    
-    \begin{columns}
-    
-        \column{0.5\textwidth}
-        This is a text in first column.
-        $$E=mc^2$$
-        $$ 1 + 2 + \cdots + k =  \frac{k \cdot (k + 1)}{2}.$$
-        \begin{itemize}
-        \item First item
-       
-        \item Second item
-        \end{itemize}
-        
-        \column{0.5\textwidth}
-        This text will be in the second column
-        and on a second tought this is a nice looking
-        layout in some cases.
-        
-        \begin{enumerate}
-            \item First
-            \item Second
-        \end{enumerate}
-        
-    \end{columns}
-    
-\end{frame}
-%---------------------------------------------------------
-
-
-%---------------------------------------------------------Slide 6
-%Highlighting text
-\setLayout{vertical}
-\begin{frame}{Sample frame title}
-    
-    In this slide, some important text will be
-    \alert{highlighted} because it's important. Please, don't abuse it.
-    
-    \begin{block}{Remark}
-        Sample text
-    \end{block}
-    
-    \begin{alertblock}{Important theorem}
-        Sample text in alert box
-    \end{alertblock}
-    
-    \begin{examples}
-        Sample text in green box. The title of the block is ``Examples".
-    \end{examples}
-    
-\end{frame}
-%---------------------------------------------------------
-
-
-%---------------------------------------------------------Slide 7
-\section{Main point layout}
+%==========================================================
+\section*{Anti-patterns — what not to do}
+%==========================================================
 
 \setLayout{mainpoint}
-\setBGColor{DarkPurple}
+\setBGColor{DarkOrange}
 \begin{frame}{}
-    \frametitle{Preliminary Empirical Study}
+    \frametitle{Anti-patterns}
 \end{frame}
-%-------------------------------------------------------
 
+%--------------------------------------------------------
+\setLayout{vertical}
+\begin{frame}{[WRONG] Two columns in vertical layout}
 
-%---------------------------------------------------------Slide 8
-
-\setLayout{horizontal}
-\begin{frame}
-    \frametitle{Sample frame title}
-    This is a text in second frame. For the sake of showing an example.
-    
-    \begin{itemize}
-        \item<1-> Text visible on slide 1
-        \item<2-> Text visible on slide 2
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Problem}
         \begin{itemize}
-            \item text subitem
+            \item Sidebar consumes 20\% of width
+            \item Columns compete with the sidebar decoration
+            \item Content gets cramped
         \end{itemize}
-        \item<3> Text visible on slides 3
-        \item<4-> Text visible on slide 4
-    \end{itemize}
-\end{frame}
-%---------------------------------------------------------
 
-\section{Thanks example}
-%---------------------------------------------------------Slide 9
+        \column{0.5\textwidth}
+        \begin{alertblock}{Correct}
+            Use \texttt{\textbackslash setLayout\{horizontal\}} for side-by-side blocks.
+            Reserve \texttt{vertical} for single-column content.
+        \end{alertblock}
+    \end{columns}
+
+\end{frame}
+
+%--------------------------------------------------------
+\setLayout{horizontal}
+\begin{frame}{[WRONG] Too much content in horizontal layout}
+
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Problem — horizontal has less vertical space}
+        \begin{itemize}
+            \item Item one with some description
+            \item Item two with some description
+            \item Item three with some description
+            \item Item four with some description
+            \item Item five pushing the limit
+            \item Item six — this overflows
+        \end{itemize}
+
+        \column{0.5\textwidth}
+        \begin{block}{Block A}
+            Some content here.
+        \end{block}
+        \vspace{0.5em}
+        \begin{block}{Block B}
+            More content here.
+        \end{block}
+        \vspace{0.5em}
+        \begin{alertblock}{Correct approach}
+            Max 4 items per column. Max 2 stacked blocks in horizontal. Split into two slides if needed.
+        \end{alertblock}
+    \end{columns}
+
+\end{frame}
+
+%==========================================================
 \setLayout{blank}
+\setBGColor{UFGBlue}
 \begin{frame}
-    
+
     \centering
     \vspace{2cm}
-    
-    \textbf{\Huge Thanks}
-    
+
+    \textbf{\Huge Thank you}
+
     \ \\
-    
-    \textbf{Doubts and Suggestions}
+
+    \textbf{Questions and suggestions are welcome}
     \ \\
-    
-    \text{\footnotesize altinodantas@gmail.com or deuslirio.junior@gmail.com}
-    
-    \vspace{2cm}
+
+    \text{\footnotesize deuslirio.junior@gmail.com}
+
+    \vspace{1cm}
     \begin{figure}
         \centering
-        \begin{subfigure}{0.2\textwidth}
-            \centering
-            \includegraphics[height=1cm]{lib/logos/infw.png}
-        \end{subfigure}%
-        \qquad 
-        \begin{subfigure}{0.2\textwidth}
-            \centering
-            \includegraphics[height=1cm]{lib/logos/ufgw.png}
-        \end{subfigure}
-      
+        \includegraphics[height=3cm]{lib/logos/INF-full-white.png}
     \end{figure}
-    
+
 \end{frame}
 
-%---------------------------------------------------------Slide 10
+%--------------------------------------------------------
 \setLayout{titlepage}
 \setBGColor{DarkGray}
 \titlepage
-%-------------------------------------
 
 \end{document}

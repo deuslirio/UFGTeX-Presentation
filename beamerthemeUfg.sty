@@ -1,6 +1,7 @@
 \ProvidesPackage{beamerthemeUfg}[2019/10/15]
-\usepackage[sfdefault]{roboto}  
+\usepackage[sfdefault]{roboto}
 \usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
 \usepackage[T1]{fontenc}
 \usepackage{array}
 \usepackage{ifthen}
@@ -57,6 +58,7 @@
     \setbeamercolor{alerted text}{fg=DarkOrange}
     \setbeamercolor{example text}{fg=DarkGreen}
     \setbeamercolor{block title}{fg=PrimaryColor}
+    \setbeamercolor{block body}{fg=DarkGray}
     \setbeamertemplate{frametitle}{ \vbox{}\hskip -0.5ex \vskip -3ex   \strut\insertframetitle\strut }
 }
 
@@ -67,7 +69,6 @@
     \setbeamercolor{structure}{fg=white}
     \setbeamercolor{normal text}{fg=white,bg=white}
     \setbeamercolor{section number projected}{bg=white,fg=white}
-    \setbeamercolor{frametitle}{fg=white}
     \setbeamercolor{itemize item}{fg=white}
     \setbeamercolor{itemize subitem}{fg=white}
     \setbeamercolor{itemize subsubitem}{fg=white}
@@ -80,6 +81,8 @@
 
 \setDefaultConfig
 
+% Tables always render with dark text regardless of layout bg color (blank/mainpoint set fg=white)
+\AtBeginEnvironment{tabular}{\color{DarkGray}}
 
 %----------------------------------------Formatting beamer elements
 \setbeamerfont{alerted text}{series=\bfseries}
@@ -90,6 +93,26 @@
 \setbeamertemplate{section in toc}{%
   {\inserttocsectionnumber.}~\inserttocsection
 }
+
+% \sectionslide[color]{Title}
+% Registers a section and auto-generates a mainpoint transition frame.
+% Color is optional — defaults to DarkGray.
+% To opt-in, add \AtBeginSection to your preamble (see below).
+% Compatible with \definecolor custom colors defined in the .tex file.
+\newcommand{\currentsectioncolor}{DarkGray}
+\newcommand{\sectionslide}[2][DarkGray]{%
+    \renewcommand{\currentsectioncolor}{#1}%
+    \section{#2}%
+}
+% Add to preamble to enable automatic mainpoint frames:
+% \AtBeginSection[]{%
+%     \setLayout{mainpoint}%
+%     \setBGColor{\currentsectioncolor}%
+%     \begin{frame}[noframenumbering]{}%
+%         \frametitle{\insertsectionhead}%
+%     \end{frame}%
+%     \setLayout{vertical}%
+% }
 \setbeamertemplate{subsection in toc}[square]
 % \setbeamertemplate{subsection in toc}{%
 %   \hspace{1.2em}{\rule[0.3ex]{3pt}{3pt}}~\inserttocsubsection\par
@@ -123,7 +146,7 @@
 	\vspace{\fill}
 	\begin{adjustbox}{max width=0.98\textwidth,clip}
 		\begin{tabular}{!{\color{PrimaryColor}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-			\begin{beamercolorbox}{block title} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
+			\begin{beamercolorbox}{block title} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}\usebeamercolor[fg]{block body}
 		}
 		\setbeamertemplate{block end}{\end{tabular}\end{adjustbox}}
 
@@ -131,7 +154,7 @@
 	\vspace{\fill}
 	\begin{adjustbox}{max width=0.98\textwidth,clip}
 		\begin{tabular}{!{\color{DarkOrange}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-			\begin{beamercolorbox}{alerted text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}
+			\begin{beamercolorbox}{alerted text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}\usebeamercolor[fg]{block body}
 		}
 		\setbeamertemplate{block alerted end}{\end{tabular}\end{adjustbox}}
 
@@ -139,9 +162,82 @@
 	\vspace{\fill}
 	\begin{adjustbox}{max width=0.98\textwidth,clip}
 		\begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-			\begin{beamercolorbox}{example text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text} 
+			\begin{beamercolorbox}{example text} \usebeamerfont*{block title} \vbox{}\vskip 0.2ex \insertblocktitle \end{beamercolorbox}\usebeamerfont*{block text}\usebeamercolor[fg]{block body}
 		}
 \setbeamertemplate{block example end}{\end{tabular}\end{adjustbox}}
+
+\newenvironment{recommendationblock}[1]{%
+	\vspace{\fill}%
+	\begin{adjustbox}{max width=0.98\textwidth,clip}%
+	\begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}%
+		\begin{beamercolorbox}{block title}\usebeamerfont*{block title}\vbox{}\vskip 0.2ex #1\end{beamercolorbox}%
+		\usebeamerfont*{block text}\usebeamercolor[fg]{block body}%
+}{%
+	\end{tabular}%
+	\end{adjustbox}%
+}
+
+% Stat display: large number + label, use inside a column
+\newcommand{\stat}[2]{%
+	\centering%
+	{\usebeamercolor[fg]{normal text}\bfseries\fontsize{40}{44}\selectfont #1}\par\vspace{0.3em}%
+	{\footnotesize #2\par}%
+}
+
+% Vertical separator between stat columns — place in a \column{0.03\textwidth}
+\newcommand{\statsep}{%
+	\centering\color{LightGray}\rule{1pt}{2cm}%
+}
+
+% Hexagonal profile photo with PrimaryColor border.
+% Usage: \profilephoto[size]{figs/photo.png}{FL}  (FL = initials shown when file missing)
+% If the file does not exist, renders a PrimaryColor hexagon with white initials.
+\newcommand{\profilephoto}[3][3.5cm]{%
+	\begin{tikzpicture}
+		\IfFileExists{#2}{%
+			\node[regular polygon, regular polygon sides=6,
+				  draw=PrimaryColor, line width=4pt,
+				  inner sep=0pt, minimum size=#1,
+				  path picture={
+					  \node at (path picture bounding box.center){%
+						  \includegraphics[height=#1]{#2}};
+				  }] {};
+		}{%
+			\node[regular polygon, regular polygon sides=6,
+				  draw=PrimaryColor, line width=4pt, fill=PrimaryColor,
+				  inner sep=0pt, minimum size=#1] (hex) {};
+			\node[white, font=\bfseries\Large] at (hex.center) {#3};
+		}%
+	\end{tikzpicture}%
+}
+
+% Quote block: thick left border, italic text, right-aligned attribution
+\newcommand{\quoteblock}[2]{%
+	\vspace{\fill}%
+	\begin{adjustbox}{max width=0.98\textwidth,clip}%
+	\begin{tabular}{!{\color{PrimaryColor}{\vrule width 6pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}%
+		{\large\itshape #1}\\[0.5em]%
+		{\small\upshape\hfill --- #2}%
+	\end{tabular}%
+	\end{adjustbox}%
+	\vspace{\fill}%
+}
+
+% Code listing styled to match theme
+\lstset{
+	basicstyle=\ttfamily\small,
+	keywordstyle=\bfseries\color{UFGBlue},
+	commentstyle=\itshape\color{LightGray},
+	stringstyle=\color{DarkGreen},
+	numberstyle=\tiny\color{LightGray},
+	numbers=left,
+	numbersep=8pt,
+	backgroundcolor=\color{VeryLightGray},
+	frame=none,
+	breaklines=true,
+	showstringspaces=false,
+	tabsize=4,
+}
 
 
 
@@ -233,16 +329,13 @@
         % Put the frame title in the middle of page
         \put(160,115){
             \begin{tabular}{m{0.7\textwidth}}
+                \color{white}
                 \begin{flushleft}
                    \selectfont \Huge \bfseries \insertframetitle
                 \end{flushleft}
             \end{tabular}
         }
-        \put(150,80){
-            \begin{tikzpicture}
-                \fill[white] (0,0) rectangle (0.2,3);
-            \end{tikzpicture}
-        }
+        \put(150,80){\color{white}\rule{0.2cm}{3cm}}
     \end{picture}
   
   }
