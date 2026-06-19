@@ -202,7 +202,8 @@
 \end{frame}
 
 %--------------------------------------------------------
-\begin{frame}[fragile]{Section Slides with \texttt{\textbackslash sectionslide}}
+\setLayout{horizontal}
+\begin{frame}{Section Slides with \texttt{\textbackslash sectionslide}}
 
     \begin{columns}
         \column{0.5\textwidth}
@@ -322,16 +323,16 @@
 \begin{tikzpicture}[
     rect/.style={rectangle, rounded corners=5pt, minimum height=0.72cm,
                  align=center, font=\small\bfseries, text=white},
-    arr/.style={->, thick, color=gray!50},
-    darr/.style={->, thick, dashed, color=UFGBlue!60}
+    arr/.style={->, thick, color=gray!70},
+    darr/.style={->, thick, dashed, color=UFGBlue!80}
 ]
-    \node[rect, fill=DarkOrange,          minimum width=9.5cm] (top)  at (0, 3.2)
+    \node[rect, fill=DarkOrange,          minimum width=9.5cm] (top)  at (0, 4.2)
         {Level 1 — Executives};
-    \node[rect, fill=DarkPurple,          minimum width=4.5cm] (l)    at (-2.6, 2.2)
+    \node[rect, fill=DarkPurple,          minimum width=4.5cm] (l)    at (-2.6, 2.8)
         {Level 2A};
-    \node[rect, fill=UFGBlue,             minimum width=4.5cm] (r)    at ( 2.6, 2.2)
+    \node[rect, fill=UFGBlue,             minimum width=4.5cm] (r)    at ( 2.6, 2.8)
         {Level 2B};
-    \node[rect, fill=DarkGray,            minimum width=9.5cm] (bot)  at (0, 1.2)
+    \node[rect, fill=DarkGray,            minimum width=9.5cm] (bot)  at (0, 1.4)
         {\textit{Level 3 — cross-cutting}};
 
     \draw[arr]  (top.south) -- ++(0,-0.15) -| (l.north);
@@ -460,26 +461,31 @@ print(output)  # everyone creates, responsibility remains
         \column{0.5\textwidth}
         \textbf{Problem — horizontal has less vertical space}
         \begin{itemize}
-            \item Item one with some description
-            \item Item two with some description
-            \item Item three with some description
-            \item Item four with some description
-            \item Item five pushing the limit
-            \item Item six — this overflows
+            \item First item with a longer description that wraps
+            \item Second item with additional context provided
+            \item Third item explaining something important
+            \item Fourth item already pushing the limit
+            \item Fifth item that clearly overflows the frame
+            \item Sixth item overflows over the footer bar
+            \item Seventh item completely invisible to audience
         \end{itemize}
 
         \column{0.5\textwidth}
-        \begin{block}{Block A}
-            Some content here.
+        \begin{block}{Block A — first point}
+            Explanation that takes two lines because someone thought more text meant more value.
         \end{block}
-        \vspace{0.5em}
-        \begin{block}{Block B}
-            More content here.
+        \vspace{0.4em}
+        \begin{block}{Block B — second point}
+            Another multi-line explanation adding even more vertical pressure to an already tight layout.
         \end{block}
-        \vspace{0.5em}
-        \begin{alertblock}{Correct approach}
-            Max 4 items per column. Max 2 stacked blocks in horizontal. Split into two slides if needed.
+        \vspace{0.4em}
+        \begin{alertblock}{Block C — overlaps footer}
+            Content overflows over the footer bar. Layout decorations sit behind — content always wins.
         \end{alertblock}
+        \vspace{0.4em}
+        \begin{block}{Block D — outside the frame}
+            This block is cut off by the slide boundary. Audience sees nothing past the edge.
+        \end{block}
     \end{columns}
 
 \end{frame}
@@ -499,7 +505,7 @@ print(output)  # everyone creates, responsibility remains
     \textbf{Questions and suggestions are welcome}
     \ \\
 
-    \text{\footnotesize deuslirio.junior@gmail.com}
+    {\footnotesize deuslirio.junior@gmail.com}
 
     \vspace{1cm}
     \begin{figure}

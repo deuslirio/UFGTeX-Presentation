@@ -170,7 +170,8 @@
 	\vspace{\fill}%
 	\begin{adjustbox}{max width=0.98\textwidth,clip}%
 	\begin{tabular}{!{\color{DarkGreen}{\vrule width 4pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}%
-		\begin{beamercolorbox}{block title}\usebeamerfont*{block title}\vbox{}\vskip 0.2ex #1\end{beamercolorbox}%
+		{\setbeamercolor{block title}{fg=DarkGreen}%
+		\begin{beamercolorbox}{block title}\usebeamerfont*{block title}\vbox{}\vskip 0.2ex #1\end{beamercolorbox}}%
 		\usebeamerfont*{block text}\usebeamercolor[fg]{block body}%
 }{%
 	\end{tabular}%
@@ -198,6 +199,7 @@
 			\node[regular polygon, regular polygon sides=6,
 				  draw=PrimaryColor, line width=4pt,
 				  inner sep=0pt, minimum size=#1,
+				  rotate=90,
 				  path picture={
 					  \node at (path picture bounding box.center){%
 						  \includegraphics[height=#1]{#2}};
@@ -205,7 +207,7 @@
 		}{%
 			\node[regular polygon, regular polygon sides=6,
 				  draw=PrimaryColor, line width=4pt, fill=PrimaryColor,
-				  inner sep=0pt, minimum size=#1] (hex) {};
+				  inner sep=0pt, minimum size=#1, rotate=90] (hex) {};
 			\node[white, font=\bfseries\Large] at (hex.center) {#3};
 		}%
 	\end{tikzpicture}%

@@ -51,20 +51,38 @@ Beamer 16:9 slides have ~96mm total height. After decorations and frametitle, us
 | `blank` | ~8.0cm | No decorations, full area |
 | `mainpoint` | title only | Body content silently ignored |
 
-**Hard limits per frame:**
+**Element height estimates (approximate):**
 
-| Element | vertical | horizontal |
-|---|---|---|
-| Bullet items (single column) | ≤ 5 | ≤ 4 |
-| Bullet items per column (two-col) | ≤ 4 | ≤ 3 |
-| Stacked blocks | ≤ 3 | ≤ 2 |
-| Block text lines per block | ≤ 3 | ≤ 2 |
+| Element | Height |
+|---|---|
+| Bullet item, 1 line | ~0.5cm |
+| Bullet item wrapping to 2 lines | ~1.0cm |
+| Bold header (`\textbf{}`) | ~0.6cm |
+| Block with 1-line body | ~1.2cm |
+| Block with 2-line body | ~1.8cm |
+| Block with 3-line body | ~2.4cm |
+| `\vspace{0.5em}` | ~0.2cm |
+| `\vspace{0.8em}` | ~0.3cm |
+| TikZ diagram (by y-coordinate range) | y_max × ~1cm per unit |
+
+**Budget check — sum element heights and compare:**
+
+| Layout | Budget |
+|---|---|
+| `vertical` | ~7.0cm |
+| `horizontal` | ~5.5cm |
+| `blank` | ~8.0cm |
+
+Example: 4 bullets (2.0cm) + 2 blocks with 2-line body (3.6cm) + 2×`\vspace{0.8em}` (0.6cm) = **6.2cm → overflows horizontal (5.5cm), fits vertical (7.0cm)**.
+
+**What happens when content overflows:**
+Layout decorations (sidebar, footer bar) are rendered in the background — overflowing content passes OVER them, not behind. Content that exceeds the slide height is clipped at the frame boundary and simply disappears. There is no scrolling, no wrapping to next slide, no warning.
 
 **When content exceeds budget:**
 1. Split into two slides — never sacrifice readability
-2. Shorten bullet text to one line each
-3. Remove `\vspace` between elements and tighten `\arraystretch`
-4. Move one block to a new frame with a related title
+2. Shorten bullet text to one line each — wrapping doubles the height cost
+3. Reduce block body to 1 line or convert to a bullet
+4. Remove `\vspace` between elements
 5. Use a table instead of stacked blocks when comparing items
 
 Always prefer fewer items with more impact over exhaustive lists.
@@ -139,26 +157,47 @@ Color mixing works: `DarkOrange!80!black`, `UFGBlue!55`, `UFGBlue!60`
 
 ## Column Patterns
 
+**HARD RULE: every frame with `\begin{columns}` MUST have `\setLayout{horizontal}` immediately before `\begin{frame}`.**  
+`\AtBeginSection` resets to `\setLayout{vertical}` — you must set horizontal explicitly every time.
+
 ```latex
 % Symmetric comparison
-\column{0.5\textwidth}  |  \column{0.5\textwidth}
+\setLayout{horizontal}
+\begin{frame}{Title}
+    \begin{columns}
+        \column{0.5\textwidth}
+        ...
+        \column{0.5\textwidth}
+        ...
+    \end{columns}
+\end{frame}
 
 % Asymmetric text + diagram/image
-\column{0.55\textwidth}  |  \column{0.45\textwidth}
-\column{0.6\textwidth}   |  \column{0.4\textwidth}
+\setLayout{horizontal}
+\begin{frame}{Title}
+    \begin{columns}
+        \column{0.6\textwidth}
+        ...
+        \column{0.4\textwidth}
+        \begin{center}
+            \includegraphics[width=0.9\textwidth]{figs/figure.png}
+        \end{center}
+    \end{columns}
+\end{frame}
 
-% Bio slide (text + portrait with hexagonal border)
-\column{0.6\textwidth}   % items/text
-\column{0.4\textwidth}
-  \begin{center}
-    \profilephoto[3.5cm]{figs/photo.png}{FL}
-  \end{center}
-% \profilephoto auto-detects: if figs/photo.png exists → shows image;
-% if not → renders PrimaryColor hexagon with white initials (3rd arg).
-% Convention: always use figs/photo.png as the path. Initials = author's first+last initial.
+% Bio slide (text + portrait)
+\setLayout{horizontal}
+\begin{frame}{Who am I}
+    \begin{columns}
+        \column{0.6\textwidth}
+        ...
+        \column{0.4\textwidth}
+        \begin{center}
+            \profilephoto[3.5cm]{figs/photo.png}{FL}
+        \end{center}
+    \end{columns}
+\end{frame}
 ```
-
-**Layout rule for two-column slides:** prefer `horizontal`. Use `blank` only when the slide purpose is visual emphasis (stat, closing, color-driven). Never use `vertical` as the primary layout for side-by-side columns.
 
 **Width rule:** column widths must sum to ≤ `\textwidth`. Never use `\paperwidth` as column base.
 
@@ -364,6 +403,17 @@ Requires `\usepackage{booktabs}` and `\usepackage{colortbl}` (colortbl included 
 ```
 
 **No vertical lines** — cleaner look, consistent with booktabs style.
+
+## Auditing an existing .tex file
+
+When reviewing a presentation.tex, scan for these violations in order:
+
+1. **Layout × columns mismatch** — for every frame containing `\begin{columns}`, confirm `\setLayout{horizontal}` is active at that point. Track `\setLayout` calls sequentially; `\AtBeginSection` resets to `\setLayout{vertical}` after each section transition.
+2. **Column widths** — sum all `\column{...}` widths per frame, must be ≤ 1.0\textwidth.
+3. **Vertical budget** — count items and stacked blocks per frame; apply horizontal limits when layout is `horizontal`.
+4. **Block overuse** — flag frames where every content element is wrapped in a block. Regular bullets are preferred for lists and descriptions.
+5. **Verbatim in block** — flag any `lstlisting` or `verbatim` inside a block environment.
+6. **`\paperwidth` references** — flag any `\paperwidth` used for column or image sizing.
 
 ## Common Mistakes
 

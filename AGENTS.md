@@ -213,24 +213,48 @@ Blocks inside `blank` layout render correctly — body text color is always Dark
 
 ## Column Patterns
 
+**Every frame with `\begin{columns}` MUST have `\setLayout{horizontal}` immediately before `\begin{frame}`.** `\AtBeginSection` resets to `\setLayout{vertical}` — set horizontal explicitly every time.
+
 ```latex
-% Symmetric comparison (horizontal layout)
-\column{0.5\textwidth}  |  \column{0.5\textwidth}
+% Symmetric comparison
+\setLayout{horizontal}
+\begin{frame}{Title}
+    \begin{columns}
+        \column{0.5\textwidth}
+        ...
+        \column{0.5\textwidth}
+        ...
+    \end{columns}
+\end{frame}
 
-% Asymmetric text + diagram/image
-\column{0.55\textwidth}  |  \column{0.45\textwidth}
+% Asymmetric text + image
+\setLayout{horizontal}
+\begin{frame}{Title}
+    \begin{columns}
+        \column{0.6\textwidth}
+        ...
+        \column{0.4\textwidth}
+        \begin{center}
+            \includegraphics[width=0.9\textwidth]{figs/figure.png}
+        \end{center}
+    \end{columns}
+\end{frame}
 
-% Bio slide (horizontal layout)
-\column{0.6\textwidth}   % text/items
-\column{0.4\textwidth}
-  \begin{center}
-    \profilephoto[3.5cm]{figs/photo.png}{FL}
-  \end{center}
+% Bio slide
+\setLayout{horizontal}
+\begin{frame}{Who am I}
+    \begin{columns}
+        \column{0.6\textwidth}
+        ...
+        \column{0.4\textwidth}
+        \begin{center}
+            \profilephoto[3.5cm]{figs/photo.png}{FL}
+        \end{center}
+    \end{columns}
+\end{frame}
 ```
 
-**Rules:**
-- Two-column slides → use `horizontal` layout. `vertical` sidebar competes with columns.
-- Column widths must sum ≤ `\textwidth`. Never use `\paperwidth` as base.
+**Width rule:** column widths must sum ≤ `\textwidth`. Never use `\paperwidth` as base.
 
 ### \profilephoto
 
