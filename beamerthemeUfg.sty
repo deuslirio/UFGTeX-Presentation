@@ -94,15 +94,19 @@
   {\inserttocsectionnumber.}~\inserttocsection
 }
 
-% \sectionslide[color]{Title}
-% Registers a section and auto-generates a mainpoint transition frame.
-% Color is optional — defaults to DarkGray.
-% To opt-in, add \AtBeginSection to your preamble (see below).
-% Compatible with \definecolor custom colors defined in the .tex file.
+% \section[color]{Title}          — color optional, defaults to DarkGray
+% \section[color][Short]{Title}   — color + short title for TOC
+% \section{Title}                 — DarkGray, no short title
+% Works with \AtBeginSection to auto-generate mainpoint frames.
 \newcommand{\currentsectioncolor}{DarkGray}
-\newcommand{\sectionslide}[2][DarkGray]{%
+\let\beamersection\section
+\RenewDocumentCommand{\section}{O{DarkGray} d[] m}{%
     \renewcommand{\currentsectioncolor}{#1}%
-    \section{#2}%
+    \IfNoValueTF{#2}{%
+        \beamersection{#3}%
+    }{%
+        \beamersection[#2]{#3}%
+    }%
 }
 % Add to preamble to enable automatic mainpoint frames:
 % \AtBeginSection[]{%
@@ -218,6 +222,7 @@
 	\vspace{\fill}%
 	\begin{adjustbox}{max width=0.98\textwidth,clip}%
 	\begin{tabular}{!{\color{PrimaryColor}{\vrule width 6pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}%
+		\vspace{0.4em}{\color{PrimaryColor}\fontsize{36}{36}\selectfont\rmfamily\bfseries\textquotedblleft}\\[0.2em]%
 		{\large\itshape #1}\\[0.5em]%
 		{\small\upshape\hfill --- #2}%
 	\end{tabular}%

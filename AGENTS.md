@@ -161,13 +161,14 @@ Add to preamble:
 }
 ```
 
-Use `\sectionslide` instead of `\section`:
+Then use `\section` with optional color and short TOC title:
 ```latex
-\sectionslide[DarkPurple]{Section Title}   % color optional — defaults to DarkGray
-\sectionslide{Another Section}             % uses DarkGray
+\section[DarkPurple]{Section Title}        % color optional — defaults to DarkGray
+\section{Another Section}                  % uses DarkGray
+\section[UFGBlue][Short]{Long Title}       % color + short TOC title
 ```
 
-`\setBGColor` persists through all frames of a section. Convention: pick one color per section for visual identity; change only on the next `\sectionslide`.
+`\setBGColor` persists through all frames of a section. Convention: pick one color per section for visual identity; change only on the next `\section`.
 
 ### Manual
 

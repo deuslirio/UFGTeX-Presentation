@@ -448,10 +448,11 @@ Add to preamble:
 }
 ```
 
-Then use `\sectionslide` instead of `\section`:
+Then use `\section` with optional color and short TOC title:
 ```latex
-\sectionslide[DarkPurple]{Section Title}   % color optional — defaults to DarkGray
-\sectionslide{Another Section}             % uses DarkGray
+\section[DarkPurple]{Section Title}        % color optional — defaults to DarkGray
+\section{Another Section}                  % uses DarkGray
+\section[UFGBlue][Short]{Long Title}       % color + short TOC title
 ```
 
 Compatible with `\definecolor` custom colors defined in the preamble.
